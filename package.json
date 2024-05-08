@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "AsoAfro",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,6 +10,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.5.15"
+    "@astrojs/preact": "^3.2.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.5.15",
+    "embla-carousel": "^8.0.2",
+    "embla-carousel-auto-height": "^8.0.2",
+    "embla-carousel-autoplay": "^8.0.2",
+    "preact": "^10.21.0",
+    "sharp": "^0.33.3",
+    "tailwindcss": "^3.4.3"
   }
 }

@@ -1,0 +1,165 @@
+---
+import Container from './Container.astro'
+---
+
+<div id='formulario' class='space-y-16'>
+  <Container>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 24 24'
+      fill='currentColor'
+      class='size-12 md:size-16 text-secondary-500 dark:text-primary-200'
+    >
+      <path
+        fill-rule='evenodd'
+        d='M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 01-1.422 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z'
+        clip-rule='evenodd'></path>
+    </svg>
+
+    <h2
+      class='mt-12 text-4xl font-bold text-primary-700 dark:text-secondary-300 sm:text-5xl xl:text-6xl'
+    >
+      Contáctanos
+    </h2>
+
+    <form
+      class='my-16 space-y-8 w-full md:w-4/5 lg:w-2/3 xl:w-1/2 mx-auto p-4 md:p-12 shadow-xl bg-secondary-300/40 dark:bg-primary-800/30 rounded-lg flex flex-col gap-4 xl:gap-12'
+      action='https://formspree.io/f/mvoedwon'
+      method='POST'
+    >
+      <div>
+        <label
+          for='name'
+          class='block text-xl font-medium mb-6 text-primary-800/90 dark:text-secondary-200'
+        >
+          Nombre
+        </label>
+
+        <div class='relative'>
+          <input
+            type='text'
+            class='peer py-4 px-4 ps-10 sm:ps-12 block w-full border-transparent rounded-lg leading-8 tracking-wide text-lg sm:text-xl disabled:opacity-50 disabled:pointer-events-none bg-gray-50 dark:bg-gray-800 text-neutral-900 dark:text-neutral-200 placeholder-neutral-500 dark:placeholder-neutral-500'
+            placeholder='Luis Gonzáles'
+            id='name'
+            name='nombre'
+            required
+          />
+          <div
+            class='absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none'
+          >
+            <svg
+              class='flex-shrink-0 size-4 xl:size-6 text-secondary-600 dark:text-primary-600'
+              xmlns='http://www.w3.org/2000/svg'
+              width='24'
+              height='24'
+              viewBox='0 0 24 24'
+              fill='none'
+              stroke='currentColor'
+              stroke-width='2'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+            >
+              <path d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2'></path>
+              <circle cx='12' cy='7' r='4'></circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for='email'
+          class='block text-xl font-medium mb-6 text-primary-800/90 dark:text-secondary-200'
+        >
+          Correo
+        </label>
+        <div class='relative'>
+          <input
+            type='email'
+            class='peer py-4 px-4 ps-10 sm:ps-12 block w-full border-transparent rounded-lg leading-8 tracking-wide text-lg sm:text-xl disabled:opacity-50 disabled:pointer-events-none bg-gray-50 dark:bg-gray-800 text-neutral-900 dark:text-neutral-200 placeholder-neutral-500 dark:placeholder-neutral-500'
+            placeholder='luis@gmail.com'
+            id='email'
+            name='correo'
+            required
+          />
+          <div
+            class='absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none'
+          >
+            <svg
+              data-testid='geist-icon'
+              class='flex-shrink-0 size-4 xl:size-5 text-secondary-600 dark:text-primary-600'
+              height='16'
+              stroke-linejoin='round'
+              viewBox='0 0 16 16'
+              width='16'
+              ><path
+                fill-rule='evenodd'
+                clip-rule='evenodd'
+                d='M8 0C3.57757 0 0 3.61682 0 8.03093C0 12.411 3.54999 16 7.9384 16C9.42621 16 10.8841 15.5819 12.1457 14.7934L12.3975 14.636L11.6025 13.364L11.3507 13.5214C10.3275 14.1609 9.14508 14.5 7.9384 14.5C4.38672 14.5 1.5 11.5909 1.5 8.03093C1.5 4.43692 4.4143 1.5 8 1.5C11.5899 1.5 14.5 4.41015 14.5 8V8.60714C14.5 9.3764 13.8764 10 13.1071 10C12.2195 10 11.5 9.28046 11.5 8.39286V8V4.5H10V5.12734C9.43308 4.73191 8.74362 4.5 8 4.5C6.067 4.5 4.5 6.067 4.5 8C4.5 9.933 6.067 11.5 8 11.5C9.05713 11.5 10.0048 11.0313 10.6466 10.2904C11.2148 11.0262 12.1056 11.5 13.1071 11.5C14.7048 11.5 16 10.2048 16 8.60714V8C16 3.58172 12.4183 0 8 0ZM10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10C9.10457 10 10 9.10457 10 8Z'
+                fill='currentColor'></path></svg
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class='relative'>
+        <label
+          for='comment'
+          class='block text-xl font-medium mb-6 text-primary-800/90 dark:text-secondary-200'
+        >
+          ¡Déjanos un comentario!
+        </label>
+        <textarea
+          class='peer p-4 ps-12 block w-full border-transparent rounded-lg tracking-wide text-lg xl:text-xl disabled:opacity-50 disabled:pointer-events-none bg-gray-50 dark:bg-gray-800 text-neutral-900 dark:border-transparent dark:text-neutral-200 placeholder-neutral-500 dark:placeholder-neutral-500'
+          rows='3'
+          placeholder='Me gustaría contratar...'
+          id='comment'
+          required
+          name='comentario'></textarea>
+        <div
+          class='absolute inset-y-0 start-0 flex items-center justify-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none'
+        >
+          <svg
+            class='flex-shrink-0 size-6 xl:size-7 text-secondary-600 dark:text-primary-600'
+            aria-hidden='true'
+            xmlns='http://www.w3.org/2000/svg'
+            width='24'
+            height='24'
+            fill='none'
+            viewBox='0 0 24 24'
+          >
+            <path
+              stroke='currentColor'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M16 10.5h.01m-4.01 0h.01M8 10.5h.01M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-6.6a1 1 0 0 0-.69.275l-2.866 2.723A.5.5 0 0 1 8 18.635V17a1 1 0 0 0-1-1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z'
+            ></path>
+          </svg>
+        </div>
+      </div>
+
+      <button
+        type='submit'
+        class='w-1/2 sm:w-72 my-0 mx-auto py-3 px-4 xl:py-4 flex items-center text-xl font-medium rounded-lg border border-secondary-100 bg-secondary-500/90 text-neutral-100 shadow-sm hover:bg-secondary-600 disabled:opacity-50 disabled:pointer-events-none dark:bg-primary-600/90 dark:border-primary-900 dark:text-neutral-100 dark:hover:bg-primary-500/80 transition duration-150'
+      >
+        Enviar
+        <svg
+          class='flex-shrink-0 size-6 ml-2'
+          xmlns='http://www.w3.org/2000/svg'
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+        >
+          <path d='M5 12h14'></path>
+          <path d='m12 5 7 7-7 7'></path>
+        </svg>
+      </button>
+    </form>
+  </Container>
+</div>

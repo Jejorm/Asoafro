@@ -1,0 +1,13 @@
+---
+// Importa el componente Image y la imagen
+import { Image } from 'astro:assets'
+import logo from '../images/asoafro.png'
+---
+
+<!-- `alt` es obligatorio en el componente Imagen -->
+<Image
+  src={logo}
+  alt='Trabajador barriendo'
+  widths={[240, 540, 720, logo.width]}
+  sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${logo.width}px`}
+/>
