@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/preact": "^3.2.0",
     "@astrojs/tailwind": "^5.1.0",
+    "@fontsource/oxygen": "^5.0.13",
     "astro": "^4.5.15",
     "embla-carousel": "^8.0.2",
     "embla-carousel-auto-height": "^8.0.2",

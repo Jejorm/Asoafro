@@ -2,6 +2,10 @@
 import AppFooter from '../components/AppFooter.astro'
 import AppHeader from '../components/AppHeader.astro'
 
+import '@fontsource/oxygen/300.css'
+import '@fontsource/oxygen/400.css'
+import '@fontsource/oxygen/700.css'
+
 interface Props {
   title: string
 }
@@ -29,7 +33,7 @@ const { title } = Astro.props
 <style is:global>
   * {
     min-width: 0;
-    font: system-ui;
+    font-family: 'Oxygen', system-ui, sans-serif;
   }
 
   *,
