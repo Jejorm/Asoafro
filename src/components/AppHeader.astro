@@ -25,6 +25,8 @@ const links = [
   const layer = document.querySelector('#navLayer')
   const links = [...navlinks.querySelector('ul').children]
 
+  const windowWidth = window.innerWidth
+
   function toggleNavlinks() {
     if (isToggled) {
       navlinks.classList.add(
@@ -65,7 +67,7 @@ const links = [
   >
     <Container>
       <div
-        class='relative flex flex-wrap items-center justify-between gap-6 py-4 md:gap-0 md:py-4'
+        class='relative flex lg:flex-wrap items-center justify-between gap-6 sm:gap-8 py-4 lg:gap-0 lg:py-4'
       >
         <div class='relative z-20 flex w-full justify-between lg:w-max'>
           <a
@@ -126,11 +128,14 @@ const links = [
                   </li>
                 ))
               }
-              <li>
+              <li class='hidden lg:block'>
                 <ThemeToggle client:only />
               </li>
             </ul>
           </div>
+        </div>
+        <div class='lg:hidden'>
+          <ThemeToggle client:only />
         </div>
       </div>
     </Container>
