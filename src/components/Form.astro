@@ -72,6 +72,9 @@ import Container from './Container.astro'
           class='block text-xl font-medium mb-6 text-primary-800/90 dark:text-secondary-200'
         >
           Correo
+          <span class='text-primary-800/60 dark:text-secondary-200/50'
+            >(Opcional)</span
+          >
         </label>
         <div class='relative'>
           <input
@@ -80,7 +83,6 @@ import Container from './Container.astro'
             placeholder='luis@gmail.com'
             id='email'
             name='Correo'
-            required
           />
           <div
             class='absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none'
@@ -98,6 +100,47 @@ import Container from './Container.astro'
                 d='M8 0C3.57757 0 0 3.61682 0 8.03093C0 12.411 3.54999 16 7.9384 16C9.42621 16 10.8841 15.5819 12.1457 14.7934L12.3975 14.636L11.6025 13.364L11.3507 13.5214C10.3275 14.1609 9.14508 14.5 7.9384 14.5C4.38672 14.5 1.5 11.5909 1.5 8.03093C1.5 4.43692 4.4143 1.5 8 1.5C11.5899 1.5 14.5 4.41015 14.5 8V8.60714C14.5 9.3764 13.8764 10 13.1071 10C12.2195 10 11.5 9.28046 11.5 8.39286V8V4.5H10V5.12734C9.43308 4.73191 8.74362 4.5 8 4.5C6.067 4.5 4.5 6.067 4.5 8C4.5 9.933 6.067 11.5 8 11.5C9.05713 11.5 10.0048 11.0313 10.6466 10.2904C11.2148 11.0262 12.1056 11.5 13.1071 11.5C14.7048 11.5 16 10.2048 16 8.60714V8C16 3.58172 12.4183 0 8 0ZM10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10C9.10457 10 10 9.10457 10 8Z'
                 fill='currentColor'></path></svg
             >
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for='phone'
+          class='block text-xl font-medium mb-6 text-primary-800/90 dark:text-secondary-200'
+        >
+          Celular
+        </label>
+        <div class='relative'>
+          <input
+            type='number'
+            class='peer py-4 px-4 ps-10 sm:ps-12 block w-full border-transparent rounded-lg leading-8 tracking-wide text-lg sm:text-xl disabled:opacity-50 disabled:pointer-events-none bg-gray-50 dark:bg-gray-800 text-neutral-900 dark:text-neutral-200 placeholder-neutral-500 dark:placeholder-neutral-500'
+            placeholder='0912345678'
+            id='phone'
+            name='Celular'
+            value='09'
+            required
+          />
+          <div
+            class='absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none'
+          >
+            <svg
+              class='flex-shrink-0 size-5 xl:size-6 text-secondary-600 dark:text-primary-600'
+              aria-hidden='true'
+              xmlns='http://www.w3.org/2000/svg'
+              width='24'
+              height='24'
+              fill='none'
+              viewBox='0 0 24 24'
+            >
+              <path
+                stroke='currentColor'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z'
+              ></path>
+            </svg>
           </div>
         </div>
       </div>
