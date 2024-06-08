@@ -1,0 +1,11 @@
+---
+import { Image } from 'astro:assets'
+import image from '../../images/polisher.png'
+---
+
+<Image
+  src={image}
+  widths={[128, 256, 384, image.width]}
+  sizes={`(max-width: 360px) 128px, (max-width: 720px) 256px, (max-width: 1600px) 384px, ${image.width}px`}
+  alt='Aspiradora de Hogar'
+/>
