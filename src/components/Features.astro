@@ -1,10 +1,14 @@
 ---
 import Container from './Container.astro'
+import Seven from './images/SeventhImage.astro'
+import Eight from './images/EighthImage.astro'
+import Nine from './images/NinethImage.astro'
+import Ten from './images/TenthImage.astro'
 ---
 
 <div id='servicios'>
   <Container>
-    <div class='lg:w-2/3'>
+    <div class='lg:w-3/4'>
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 24 24'
@@ -18,160 +22,229 @@ import Container from './Container.astro'
       </svg>
 
       <h2
-        class='my-8 xl:my-12 text-4xl font-bold text-primary-700 dark:text-secondary-300 sm:text-5xl xl:text-6xl'
+        class='mt-8 xl:mt-12 text-4xl font-bold text-primary-700 dark:text-secondary-300 sm:text-5xl xl:text-6xl'
       >
-        A technology-first approach to payments and finance
+        Nuestros Impecables Servicios
       </h2>
       <p
-        class='text-primary-900 dark:text-secondary-100 text-xl sm:text-2xl xl:text-3xl'
+        class='text-primary-900 dark:text-secondary-100 text-xl sm:text-2xl lg:text-3xl my-8 sm:my-12 xl:my-16'
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus ad ipsum
-        pariatur autem, fugit laborum in atque amet obcaecati? Nisi minima
-        aspernatur, quidem nulla cupiditate nam consequatur eligendi magni
-        adipisci.
+        Destacados por la
+
+        <span class='text-secondary-600 dark:text-primary-400'> calidad </span>
+
+        excepcional y
+
+        <span class='text-secondary-600 dark:text-primary-400'> atención </span>
+
+        meticulosa a los detalles.
+      </p>
+
+      <p
+        class='text-primary-900 dark:text-secondary-100 text-xl sm:text-2xl lg:text-3xl my-8 sm:my-12 xl:my-16'
+      >
+        Equipo de
+
+        <span class='text-primary-600 dark:text-secondary-300'>
+          profesionales
+        </span>
+
+        altamente capacitados con productos y equipos de
+
+        <span class='text-primary-600 dark:text-secondary-300'>
+          última generación.
+        </span>
+      </p>
+
+      <p
+        class='text-primary-900 dark:text-secondary-100 text-xl sm:text-2xl lg:text-3xl'
+      >
+        Nos a sus
+
+        <span class='text-secondary-600 dark:text-primary-400'>
+          adaptamos
+        </span>
+
+        necesidades, ofreciendo una experiencia de limpieza y cuidado del jardín
+
+        <span class='text-primary-600 dark:text-secondary-300'>
+          inigualable.
+        </span>
       </p>
     </div>
+
     <div
-      class='mt-16 xl:mt-24 grid divide-x divide-y divide-primary-600 dark:divide-secondary-200 overflow-hidden rounded-3xl border border-primary-600 dark:border-secondary-200 sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0 xl:grid-cols-4'
+      class='mt-16 xl:mt-24 grid divide-x divide-y lg:grid-cols-2 divide-primary-600 dark:divide-secondary-200 overflow-hidden rounded-3xl border border-primary-600 dark:border-secondary-200'
     >
       <div
-        class='group relative bg-gray-50 dark:bg-gray-800 transition hover:shadow-2xl hover:scale-105'
+        class='group relative flex py-8 sm:justify-center bg-gray-50 dark:bg-gray-800 transition hover:shadow-2xl hover:scale-105 lg:pointer-events-none'
       >
         <div class='relative space-y-8 py-12 p-8'>
-          <img
-            src='https://cdn-icons-png.flaticon.com/512/4341/4341139.png'
-            class='w-12'
-            width='512'
-            height='512'
-            alt='burger illustration'
-          />
+          <div class='max-w-16'>
+            <Seven />
+          </div>
 
-          <div class='space-y-8'>
+          <div class='space-y-8 sm:space-y-12'>
             <h5
-              class='text-3xl sm:text-2xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
+              class='text-3xl sm:text-4xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
             >
-              First feature
+              Casas y Hogares
             </h5>
-            <p
-              class='text-primary-950/80 text-xl sm:text-lg dark:text-secondary-100/80'
+
+            <ul
+              class='text-primary-950/80 flex flex-col gap-8 text-xl sm:text-2xl dark:text-secondary-100/80'
             >
-              Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.
-            </p>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Desinfección de Superficies.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Aspirado y Treapeado de Suelos.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Limpieza de Ventanas.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 text-secondary-600 dark:marker:text-primary-300 dark:text-primary-300'
+              >
+                Productos Seguros y Eficaces.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+
       <div
-        class='group relative bg-gray-50 dark:bg-gray-800 transition hover:shadow-2xl hover:shadow-gray-600/10 hover:scale-105'
+        class='group relative flex py-8 sm:justify-center bg-gray-50 dark:bg-gray-800 transition hover:shadow-2xl hover:scale-105 lg:pointer-events-none'
       >
         <div class='relative space-y-8 py-12 p-8'>
-          <img
-            src='https://cdn-icons-png.flaticon.com/512/4341/4341134.png'
-            class='w-12'
-            width='512'
-            height='512'
-            alt='burger illustration'
-          />
+          <div class='max-w-16'>
+            <Eight />
+          </div>
 
-          <div class='space-y-8'>
+          <div class='space-y-8 sm:space-y-12'>
             <h5
-              class='text-3xl sm:text-2xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
+              class='text-3xl sm:text-4xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
             >
-              Second feature
+              Oficinas e Instituciones
             </h5>
-            <p
-              class='text-primary-950/80 text-xl sm:text-lg dark:text-secondary-100/80'
+
+            <ul
+              class='text-primary-950/80 flex flex-col gap-8 text-xl sm:text-2xl dark:text-secondary-100/80'
             >
-              Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.
-            </p>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Desinfección de Áreas Comunes.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Limpieza de Superficies de Alto Contacto.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Mantenimiento de Baños y Cocinas.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 text-secondary-600 dark:marker:text-primary-300 dark:text-primary-300'
+              >
+                Adaptación a sus Horarios y Necesidades.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+
       <div
-        class='group relative bg-gray-50 dark:bg-gray-800 transition hover:shadow-2xl hover:shadow-gray-600/10 hover:scale-105'
+        class='group relative flex py-8 sm:justify-center bg-gray-50 dark:bg-gray-800 transition hover:shadow-2xl hover:scale-105 lg:pointer-events-none'
       >
         <div class='relative space-y-8 py-12 p-8'>
-          <img
-            src='https://cdn-icons-png.flaticon.com/512/4341/4341160.png'
-            class='w-12'
-            width='512'
-            height='512'
-            alt='burger illustration'
-          />
-
-          <div class='space-y-8'>
-            <h5
-              class='text-3xl sm:text-2xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
-            >
-              Third feature
-            </h5>
-            <p
-              class='text-primary-950/80 text-xl sm:text-lg dark:text-secondary-100/80'
-            >
-              Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.
-            </p>
+          <div class='max-w-16'>
+            <Nine />
           </div>
-          <!-- <a
-            href='#'
-            class='flex items-center justify-between group-hover:text-primary-300'
-          >
-            <span class='text-sm'>Read more</span>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              viewBox='0 0 24 24'
-              fill='currentColor'
-              class='w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100'
+
+          <div class='space-y-8 sm:space-y-12'>
+            <h5
+              class='text-3xl sm:text-4xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
             >
-              <path
-                fill-rule='evenodd'
-                d='M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z'
-                clip-rule='evenodd'></path>
-            </svg>
-          </a> -->
+              Colchones y Muebles
+            </h5>
+
+            <ul
+              class='text-primary-950/80 flex flex-col gap-8 text-xl sm:text-2xl dark:text-secondary-100/80'
+            >
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Eliminación de Ácaros y Alérgenos.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Técnicas Avanzadas de Inyección - Extracción.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Remoción de Manchas, Olores y Suciedad.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 text-secondary-600 dark:marker:text-primary-300 dark:text-primary-300'
+              >
+                Resultado Impecable con Confort Renovado.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div
-        class='group relative bg-secondary-50 dark:bg-primary-950 transition hover:shadow-2xl hover:shadow-gray-50 dark:hover:shadow-gray-700/10 hover:scale-105'
-      >
-        <div
-          class='relative space-y-8 py-12 p-8 transition duration-300 group-hover:bg-gray-50 dark:group-hover:bg-gray-800'
-        >
-          <img
-            src='https://cdn-icons-png.flaticon.com/512/4341/4341025.png'
-            class='w-12'
-            width='512'
-            height='512'
-            alt='burger illustration'
-          />
 
-          <div class='space-y-8'>
-            <h5
-              class='text-3xl sm:text-2xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
-            >
-              More features
-            </h5>
-            <p
-              class='text-primary-950/80 text-xl sm:text-lg dark:text-secondary-100/80'
-            >
-              Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.
-            </p>
+      <div
+        class='group relative flex py-8 sm:justify-center bg-gray-50 dark:bg-gray-800 transition hover:shadow-2xl hover:scale-105 lg:pointer-events-none'
+      >
+        <div class='relative space-y-8 py-12 p-8'>
+          <div class='max-w-16'>
+            <Ten />
           </div>
-          <!-- <a
-            href='#'
-            class='flex items-center justify-between group-hover:text-primary-300'
-          >
-            <span class='text-sm'>Read more</span>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              viewBox='0 0 24 24'
-              fill='currentColor'
-              class='w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100'
+
+          <div class='space-y-8 sm:space-y-12'>
+            <h5
+              class='text-3xl sm:text-4xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
             >
-              <path
-                fill-rule='evenodd'
-                d='M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z'
-                clip-rule='evenodd'></path>
-            </svg>
-          </a> -->
+              Jardinería y Áreas Verdes
+            </h5>
+
+            <ul
+              class='text-primary-950/80 flex flex-col gap-8 text-xl sm:text-2xl dark:text-secondary-100/80'
+            >
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Poda, Desbroce y Diseño de Áreas Verdes.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Mantenimiento de Césped, Arbustos y Flores.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
+              >
+                Herramientas de Última Generación.
+              </li>
+              <li
+                class='list-disc list-inside marker:text-secondary-600 text-secondary-600 dark:marker:text-primary-300 dark:text-primary-300'
+              >
+                Técnicas Ecológicas con Resultados Vibrantes.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
