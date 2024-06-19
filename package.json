@@ -1,12 +1,12 @@
 {
-  "name": "AsoAfro",
+  "name": "asoafro",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "wrangler pages dev ./dist",
     "astro": "astro"
   },
   "dependencies": {
@@ -20,5 +20,8 @@
     "preact": "^10.21.0",
     "sharp": "^0.33.3",
     "tailwindcss": "^3.4.3"
+  },
+  "devDependencies": {
+    "wrangler": "^3.61.0"
   }
 }
