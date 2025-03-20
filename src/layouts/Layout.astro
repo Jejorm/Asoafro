@@ -23,7 +23,7 @@ const { title } = Astro.props
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class='bg-secondary-50 dark:bg-primary-950'>
+  <body class='bg-secondary-50 dark:bg-primary-950 scroll-smooth'>
     <AppHeader />
     <slot />
     <AppFooter />
@@ -77,6 +77,12 @@ const { title } = Astro.props
 </style>
 
 <script is:inline>
+  window.addEventListener('load', function () {
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 0)
+  })
+
   const theme = (() => {
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
       return localStorage.getItem('theme')
