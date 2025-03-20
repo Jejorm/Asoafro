@@ -4,15 +4,15 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState(
     window.localStorage.getItem('theme') ?? 'dark'
   )
-  const [isMounted, setIsMounted] = useState(false)
+  // const [isMounted, setIsMounted] = useState(false)
 
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
+  // useEffect(() => {
+  //   setIsMounted(true)
+  // }, [])
 
-  if (!isMounted) {
-    return null
-  }
+  // if (!isMounted) {
+  //   return null
+  // }
 
   useEffect(() => {
     if (theme === 'dark') {
