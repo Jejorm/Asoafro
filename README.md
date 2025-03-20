@@ -25,9 +25,38 @@ El objetivo es transmitir confianza, calidad y atención meticulosa a los detall
 
 ---
 
-## Instalación y desarrollo local
+## Instalación y desarrollo local usando pnpm
+
+### Requisitos previos
+
+- Tener instalado [Node.js](https://nodejs.org/)
+- Tener instalado [pnpm](https://pnpm.io/)
+
+### Pasos
+
+1. Clona el repositorio:
+
+```bash
+git clone https://github.com/Jejorm/Asoafro.git
+```
+
+2. Entra a la carpeta del proyecto:
+
+```bash
+cd Asoafro
+```
+
+3.Instala las dependencias:
 
 ```bash
 pnpm install
+```
+
+4. Inicia el servidor de desarrollo:
+
+```bash
 pnpm dev
 ```
+
+5. Abre tu navegador en:
+   http://localhost:4321
