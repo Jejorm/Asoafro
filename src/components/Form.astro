@@ -41,6 +41,7 @@ import Container from './Container.astro'
             class='peer py-4 px-4 ps-10 sm:ps-12 block w-full border-transparent rounded-lg leading-8 tracking-wide text-lg sm:text-xl disabled:opacity-50 disabled:pointer-events-none bg-gray-50 dark:bg-gray-800 text-neutral-900 dark:text-neutral-200 placeholder-neutral-500 dark:placeholder-neutral-500'
             id='name'
             name='Nombre'
+            placeholder='Andrea'
             required
           />
           <div
@@ -78,6 +79,7 @@ import Container from './Container.astro'
             class='peer py-4 px-4 ps-10 sm:ps-12 block w-full border-transparent rounded-lg leading-8 tracking-wide text-lg sm:text-xl disabled:opacity-50 disabled:pointer-events-none bg-gray-50 dark:bg-gray-800 text-neutral-900 dark:text-neutral-200 placeholder-neutral-500 dark:placeholder-neutral-500'
             id='phone'
             name='Celular'
+            placeholder='0912345678'
             required
           />
           <div
@@ -104,7 +106,7 @@ import Container from './Container.astro'
         </div>
       </div>
 
-      <!-- <div>
+      <div>
         <label
           for='email'
           class='block text-xl font-medium mb-6 text-primary-800/90 dark:text-secondary-200'
@@ -118,7 +120,7 @@ import Container from './Container.astro'
           <input
             type='email'
             class='peer py-4 px-4 ps-10 sm:ps-12 block w-full border-transparent rounded-lg leading-8 tracking-wide text-lg sm:text-xl disabled:opacity-50 disabled:pointer-events-none bg-gray-50 dark:bg-gray-800 text-neutral-900 dark:text-neutral-200 placeholder-neutral-500 dark:placeholder-neutral-500'
-            placeholder='luis@gmail.com'
+            placeholder='correo@mail.com'
             id='email'
             name='Correo'
           />
@@ -140,7 +142,7 @@ import Container from './Container.astro'
             >
           </div>
         </div>
-      </div> -->
+      </div>
 
       <div class='relative'>
         <label
@@ -150,7 +152,7 @@ import Container from './Container.astro'
           ¡Déjanos un comentario!
         </label>
         <textarea
-          class='peer p-4 ps-14 block w-full border-transparent rounded-lg tracking-wide text-lg xl:text-xl disabled:opacity-50 disabled:pointer-events-none bg-gray-50 dark:bg-gray-800 text-neutral-900 dark:border-transparent dark:text-neutral-200 placeholder-neutral-500 dark:placeholder-neutral-500'
+          class='peer p-4 ps-14 block w-full border-transparent rounded-lg tracking-wide text-lg xl:text-xl disabled:opacity-50 disabled:pointer-events-none bg-gray-50 dark:bg-gray-800 text-neutral-900 dark:border-transparent dark:text-neutral-200 placeholder-neutral-500 dark:placeholder-neutral-500 resize-none'
           rows='3'
           placeholder='Me gustaría contratar...'
           id='comment'
