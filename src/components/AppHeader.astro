@@ -30,19 +30,19 @@ const links = [
   function toggleNavlinks() {
     if (isToggled) {
       navlinks.classList.add(
-        '!visible',
-        '!scale-100',
-        '!opacity-100',
-        '!lg:translate-y-0'
+        'visible!',
+        'scale-100!',
+        'opacity-100!',
+        'lg:translate-y-0!'
       )
       hamburger.classList.add('toggled')
       layer.classList.add('origin-top', 'scale-y-100')
     } else {
       navlinks.classList.remove(
-        '!visible',
-        '!scale-100',
-        '!opacity-100',
-        '!lg:translate-y-0'
+        'visible!',
+        'scale-100!',
+        'opacity-100!',
+        'lg:translate-y-0!'
       )
       hamburger.classList.remove('toggled')
       layer.classList.remove('origin-top', 'scale-y-100')
@@ -90,13 +90,13 @@ const links = [
               <div
                 aria-hidden='true'
                 id='line'
-                class='m-auto h-1 w-8 sm:w-10 rounded bg-primary-700 transition duration-300 dark:bg-secondary-400'
+                class='m-auto h-1 w-8 sm:w-10 rounded-sm bg-primary-700 transition duration-300 dark:bg-secondary-400'
               >
               </div>
               <div
                 aria-hidden='true'
                 id='line2'
-                class='m-auto h-1 mt-2 w-8 sm:w-10 rounded bg-primary-700 transition duration-300 dark:bg-secondary-400'
+                class='m-auto h-1 mt-2 w-8 sm:w-10 rounded-sm bg-primary-700 transition duration-300 dark:bg-secondary-400'
               >
               </div>
             </button>
@@ -143,6 +143,8 @@ const links = [
 </header>
 
 <style>
+  @reference '../styles/global.css';
+
   #toggle_nav:checked ~ div #hamburger #line {
     @apply translate-y-1.5 rotate-45;
   }

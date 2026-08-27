@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+
+/* Dark mode is toggled by a `.dark` class on <html>, set by the inline script
+   in Layout.astro and by the ThemeToggle island. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary-50: #daeff6;
+  --color-primary-100: #cae8f2;
+  --color-primary-200: #a5d8e9;
+  --color-primary-300: #84cae1;
+  --color-primary-400: #5fbad8;
+  --color-primary-500: #3aaacf;
+  --color-primary-600: #2b8fb0;
+  --color-primary-700: #23748f;
+  --color-primary-800: #1a566a;
+  --color-primary-900: #113846;
+  --color-primary-950: #0d2b35;
+
+  --color-secondary-50: #f3e9e2;
+  --color-secondary-100: #ecdcd0;
+  --color-secondary-200: #dec3b0;
+  --color-secondary-300: #d1aa8f;
+  --color-secondary-400: #c3926f;
+  --color-secondary-500: #b6794e;
+  --color-secondary-600: #94613d;
+  --color-secondary-700: #734c30;
+  --color-secondary-800: #533722;
+  --color-secondary-900: #332115;
+  --color-secondary-950: #20150d;
+}
