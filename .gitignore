@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # gentle-ai skill registry cache
 .atl/
+
+# design canvas working files
+.design-work/
