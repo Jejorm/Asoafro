@@ -1,5 +1,4 @@
 import EmblaCarousel from 'embla-carousel'
-import AutoHeight from 'embla-carousel-auto-height'
 import Autoplay from 'embla-carousel-autoplay'
 
 const addTogglePrevNextBtnsActive = (emblaApi, prevBtn, nextBtn) => {
@@ -45,11 +44,56 @@ const addPrevNextBtnsClickHandlers = (emblaApi, prevBtn, nextBtn) => {
     }
 }
 
+const addDotBtns = (emblaApi, dotsNode) => {
+    let dotNodes = []
+
+    const addDotBtnsWithClickHandlers = () => {
+        dotsNode.innerHTML = emblaApi
+            .scrollSnapList()
+            .map(
+                (_, index) =>
+                    `<button class="embla__dot" type="button" aria-label="Ir a la imagen ${index + 1}"></button>`
+            )
+            .join('')
+
+        dotNodes = Array.from(dotsNode.querySelectorAll('.embla__dot'))
+        dotNodes.forEach((dotNode, index) => {
+            dotNode.addEventListener(
+                'click',
+                () => emblaApi.scrollTo(index),
+                false
+            )
+        })
+    }
+
+    const toggleDotBtnsActive = () => {
+        const previous = emblaApi.previousScrollSnap()
+        const selected = emblaApi.selectedScrollSnap()
+        dotNodes[previous]?.classList.remove('embla__dot--selected')
+        dotNodes[selected]?.classList.add('embla__dot--selected')
+    }
+
+    emblaApi
+        .on('reInit', addDotBtnsWithClickHandlers)
+        .on('reInit', toggleDotBtnsActive)
+        .on('select', toggleDotBtnsActive)
+
+    // `init` already fired while EmblaCarousel() was constructing, so the
+    // first build has to be kicked off by hand — same as the snap display.
+    addDotBtnsWithClickHandlers()
+    toggleDotBtnsActive()
+
+    return () => {
+        dotsNode.innerHTML = ''
+    }
+}
+
 const updateSelectedSnapDisplay = (emblaApi, snapDisplay) => {
     const updateSnapDisplay = (emblaApi) => {
         const selectedSnap = emblaApi.selectedScrollSnap()
         const snapCount = emblaApi.scrollSnapList().length
-        snapDisplay.innerHTML = `${selectedSnap + 1} / ${snapCount}`
+        const pad = (value) => String(value).padStart(2, '0')
+        snapDisplay.innerHTML = `${pad(selectedSnap + 1)} / ${pad(snapCount)}`
     }
 
     emblaApi.on('select', updateSnapDisplay).on('reInit', updateSnapDisplay)
@@ -90,25 +134,32 @@ const emblaNode = document.querySelector('.embla')
 const viewportNode = emblaNode.querySelector('.embla__viewport')
 const prevBtnNode = emblaNode.querySelector('.embla__button--prev')
 const nextBtnNode = emblaNode.querySelector('.embla__button--next')
+const dotsNode = emblaNode.querySelector('.embla__dots')
 const snapDisplayNode = emblaNode.querySelector('.embla__selected-snap-display')
 
-const emblaApi = EmblaCarousel(viewportNode, OPTIONS, [AutoHeight(), Autoplay({
-    playOnInit: true, delay: 3000
-})])
+const emblaApi = EmblaCarousel(viewportNode, OPTIONS, [
+    Autoplay({ playOnInit: true, delay: 3000 }),
+])
 
 const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
     emblaApi,
     prevBtnNode,
     nextBtnNode
 )
+const removeDotBtns = addDotBtns(emblaApi, dotsNode)
 const stopSelectedSnapDisplay = updateSelectedSnapDisplay(
     emblaApi,
     snapDisplayNode
 )
 
-const removeNavBtnListeners = addNavBtnListeners(emblaApi, prevBtnNode, nextBtnNode)
+const removeNavBtnListeners = addNavBtnListeners(
+    emblaApi,
+    prevBtnNode,
+    nextBtnNode,
+    dotsNode
+)
 
 emblaApi.on('destroy', removePrevNextBtnsClickHandlers)
+emblaApi.on('destroy', removeDotBtns)
 emblaApi.on('destroy', stopSelectedSnapDisplay)
 emblaApi.on('destroy', removeNavBtnListeners)
-

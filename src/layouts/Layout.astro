@@ -4,9 +4,10 @@ import AppHeader from '../components/AppHeader.astro'
 
 import '../styles/global.css'
 
-import '@fontsource/oxygen/300.css'
-import '@fontsource/oxygen/400.css'
-import '@fontsource/oxygen/700.css'
+import '@fontsource/archivo-black/400.css'
+import '@fontsource/karla/400.css'
+import '@fontsource/karla/500.css'
+import '@fontsource/karla/700.css'
 
 interface Props {
   title: string
@@ -24,10 +25,12 @@ const { title } = Astro.props
       content='AsoAfro una empresa dedicada a la limpieza profesional de casas, oficinas, instituciones, desinfección de colchones, muebles y cuidado integral del jardín. Transmitimos confianza, calidad y atención meticulosa a los detalles, destacando nuestros servicios de limpieza y jardinería que superan expectativas.'
     />
     <meta name='viewport' content='width=device-width' />
+    <meta name='color-scheme' content='dark' />
+    <meta name='theme-color' content='#060d11' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <title>{title}</title>
   </head>
-  <body class='bg-secondary-50 dark:bg-primary-950 scroll-smooth'>
+  <body class='bg-canvas text-ink'>
     <AppHeader />
     <slot />
     <AppFooter />
@@ -37,7 +40,7 @@ const { title } = Astro.props
 <style is:global>
   * {
     min-width: 0;
-    font-family: 'Oxygen', system-ui, sans-serif;
+    font-family: 'Karla', system-ui, sans-serif;
   }
 
   *,
@@ -55,6 +58,7 @@ const { title } = Astro.props
   }
 
   html {
+    color-scheme: dark;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -72,11 +76,23 @@ const { title } = Astro.props
   h4,
   h5,
   h6 {
+    font-family: 'Archivo Black', 'Arial Black', Impact, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
     text-wrap: balance;
   }
 
   p {
     text-wrap: pretty;
+  }
+
+  ::placeholder {
+    color: var(--color-ink-faint);
+  }
+
+  ::selection {
+    background: var(--color-primary-400);
+    color: var(--color-on-accent);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -92,21 +108,4 @@ const { title } = Astro.props
       window.scrollTo(0, 0)
     }, 0)
   })
-
-  const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme')
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark'
-    }
-    return 'light'
-  })()
-
-  if (theme === 'light') {
-    document.documentElement.classList.remove('dark')
-  } else {
-    document.documentElement.classList.add('dark')
-  }
-  window.localStorage.setItem('theme', theme)
 </script>

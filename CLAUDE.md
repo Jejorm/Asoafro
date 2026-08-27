@@ -20,7 +20,9 @@ There is no lint or test script. `pnpm astro ...` exposes the Astro CLI (`astro 
 
 ## Stack
 
-Astro 7 + Tailwind 4 + Preact islands (`@astrojs/preact`). Images through `astro:assets` + `sharp`. Carousel is `embla-carousel`. Font is `@fontsource/oxygen`. Deploy target is Cloudflare Pages (`wrangler` is the only devDependency).
+Astro 7 + Tailwind 4. Images through `astro:assets` + `sharp`. Carousel is `embla-carousel`. Fonts are `@fontsource/archivo-black` (display) and `@fontsource/karla` (body). Deploy target is Cloudflare Pages (`wrangler` is the only devDependency).
+
+`@astrojs/preact` is still configured but **no island uses it** — the theme toggle was the only one and it is gone. Ships nothing today; drop the integration if no island comes back.
 
 Tailwind is wired as a **Vite plugin** (`@tailwindcss/vite` in `astro.config.mjs`), not an Astro integration. `@astrojs/tailwind` is gone and cannot come back — its peer range stops at `astro ^5` / `tailwindcss ^3`.
 
@@ -29,17 +31,30 @@ Tailwind is wired as a **Vite plugin** (`@tailwindcss/vite` in `astro.config.mjs
 **One page.** `src/pages/index.astro` stacks section components inside `src/layouts/Layout.astro`:
 `HeroSection` → `Features` → `Carousel` → `Form`, with `AppHeader` / `AppFooter` from the layout. Navigation is in-page anchors (`#servicios`, `#galeria`, `#formulario`, `#home`). `Container.astro` is the shared `max-w-7xl` horizontal wrapper — reuse it, don't re-declare the widths.
 
-**Theme (dark/light) has two cooperating pieces:**
-1. An inline `is:inline` script in `Layout.astro` runs before paint: reads `localStorage.theme` (falling back to `prefers-color-scheme`), toggles `.dark` on `<html>`, writes `localStorage.theme`. This exists to prevent a flash — do not move it into a component or make it a module.
-2. `src/components/theme/ThemeToggle.jsx` is a Preact island mounted with `client:only="preact"` (rendered twice in `AppHeader` — desktop and mobile). It flips and persists the same `localStorage.theme` key.
+**The site is dark-only.** There is no `.dark` class, no `dark:` variant, no `localStorage.theme` and no toggle — every token in `global.css` is the one palette the page renders with. `<meta name='color-scheme' content='dark'>` and `color-scheme: dark` on `html` tell the browser so form controls and scrollbars match. Do not reintroduce a `dark:` variant for a one-off color; add a token instead.
 
-The `dark:` variant is redefined in `global.css` as `@custom-variant dark (&:where(.dark, .dark *))`, so everything keys off that `.dark` class rather than `prefers-color-scheme`.
+**Colors.** `src/styles/global.css` defines everything under `@theme`:
 
-**Colors.** `src/styles/global.css` defines two custom scales under `@theme`: `primary` (teal) and `secondary` (brown/tan). The design deliberately swaps their roles between modes — light mode leans `secondary`, dark mode leans `primary`. When adding markup, follow the existing `text-primary-700 dark:text-secondary-300` style pairing rather than inventing new color combinations.
+- Two brand scales, unchanged from the original site: `primary` (teal) and `secondary` (warm tan). The design uses exactly two steps of them — `primary-400` (`#5fbad8`) is the main accent, `secondary-300` (`#d1aa8f`) the warm counterpoint. Teal leads; tan is reserved for gardening and for the closing "promise" bullet of each service card.
+- Semantic, non-numeric tokens for everything else: surfaces (`canvas`, `surface`, `surface-sunken`, `surface-raised`, `surface-warm`), hairlines (`line`, `line-strong`), text from brightest to faintest (`ink-bright`, `ink`, `ink-soft`, `ink-muted`, `ink-dim`, `ink-faint`, `ink-ghost`) and `on-accent` for text sitting on an accent fill.
 
-**Images.** Every gallery/feature image is its own wrapper component under `src/components/images/`, named ordinally (`FirstImage.astro` … `FourteenthImage.astro`). Each wraps `astro:assets` `<Image>` with a fixed `widths` / `sizes` responsive recipe. Allocation is not contiguous: `Carousel.astro` uses First–Sixth + Eleventh–Fourteenth; `Features.astro` uses Seventh–Tenth (imported there as `Seven`…`Ten`). To add a gallery image, create the next ordinal component and add a `.embla__slide` block in `Carousel.astro`. (Note: `FourthImage.astro` is imported as `ForthImage` in `Carousel.astro` — pre-existing typo, keep consistent if you touch it.)
+They are named rather than numbered on purpose: the ramp has near-duplicate steps that numeric naming would have forced into `ink-750`-style nonsense. Reach for an existing token before inventing a hex.
 
-**Carousel.** `src/components/Carousel.astro` owns the markup and loads behavior via `<script src='../carousel.js'>`. `src/carousel.js` is a plain DOM script (not a component) that `querySelector`s `.embla` and its children, wires the prev/next buttons, the `x / y` snap counter, and Embla plugins `AutoHeight` + `Autoplay` (loop on, 3s delay). It assumes exactly one `.embla` on the page.
+`rhythm-rule` is a custom `@utility` — the dotted band under the hero and in the contact panel, a nod to the guasá in the association's name.
+
+**Typography.** Display face is Archivo Black (`font-display`, applied to every heading by the global rule in `Layout.astro`); body is Karla. Both are self-hosted through `@fontsource`, imported in `Layout.astro`.
+
+**Images.** Every gallery image is its own wrapper component under `src/components/images/`, named ordinally (`FirstImage.astro` … `FourteenthImage.astro`). Each wraps `astro:assets` `<Image>` with a fixed `widths` / `sizes` responsive recipe. `Carousel.astro` uses First–Sixth + Eleventh–Fourteenth, collected into a `slides` array and mapped over. Seventh–Tenth are currently unused: the redesigned service cards draw inline SVG icons instead of the old photographic ones. To add a gallery image, create the next ordinal component and append it to `slides`. (Note: `FourthImage.astro` is imported as `ForthImage` in `Carousel.astro` — pre-existing typo, keep consistent if you touch it.)
+
+**Carousel.** `src/components/Carousel.astro` owns the markup and loads behavior via `<script src='../carousel.js'>`. `src/carousel.js` is a plain DOM script (not a component) that `querySelector`s `.embla` and its children, wires the prev/next buttons, the dot row, the `01 / 10` snap counter, and the Embla `Autoplay` plugin (loop on, 3s delay). It assumes exactly one `.embla` on the page.
+
+Three things there are load-bearing and easy to break:
+
+- **Embla fires `init` synchronously inside `EmblaCarousel(...)`,** before any `.on('init', …)` you register afterwards. The dot row and the counter therefore call their builders by hand right after registering; a handler attached to `init` alone never runs.
+- **The dot buttons are created at runtime,** so they never carry Astro's `data-astro-cid-*` scope attribute. Their styles live in `Carousel.astro`'s scoped `<style>` wrapped in `:global(...)` — without it the buttons exist, size to nothing, and vanish silently. The same applies to the `img` fill rule, since the ordinal wrappers render their own `<Image>`.
+- **Ten dots do not fit on a phone** without wrapping to a second row, so they are `hidden sm:flex` and the counter carries the position below `sm`.
+
+`AutoHeight` was dropped with the redesign: slides now have fixed responsive heights with `object-fit: cover`, which is what the design calls for and what auto-height fights.
 
 **Header mobile nav.** `AppHeader.astro` uses a vanilla `<script>` that toggles `!`-suffixed important utility classes (`visible!`, `opacity-100!`, …) on `#navlinks` / `#hamburger` / `#navLayer`. State is a module-level `isToggled` boolean. Those classes reach the bundle **only because Tailwind's scanner finds them as string literals in this file** — see the Tailwind section below before refactoring them into a variable or building them dynamically.
 
@@ -47,12 +62,11 @@ The `dark:` variant is redefined in `global.css` as `@custom-variant dark (&:whe
 
 ## Tailwind 4 specifics
 
-There is **no `tailwind.config.mjs`**. All configuration is CSS-first in `src/styles/global.css`, imported once from `Layout.astro`: the `@import 'tailwindcss'`, the `@custom-variant dark`, and the `@theme` color scales. Content sources are auto-detected — there is no `content` array to maintain.
+There is **no `tailwind.config.mjs`**. All configuration is CSS-first in `src/styles/global.css`, imported once from `Layout.astro`: the `@import 'tailwindcss'`, the `@theme` tokens and the `rhythm-rule` `@utility`. Content sources are auto-detected — there is no `content` array to maintain.
 
 - **`@apply` inside an Astro scoped `<style>` requires `@reference`** at the top of that block, pointing at `global.css` *relative to the component* (`'../styles/global.css'` from `src/components/`). Without it Tailwind emits *nothing* and reports no error — the rule just silently does nothing. `AppHeader.astro`'s hamburger animation depends on this.
 - **The important modifier is a suffix, not a prefix**: `visible!`, not `!visible`. A v3-style `!visible` is simply not a class.
-- **Classes applied at runtime must appear verbatim in a source file.** The scanner reads text, it does not execute code — a class assembled from variables never gets generated.
-- **The `dark:` variant carries no extra specificity.** `:where()` contributes zero, so `dark:bg-x` and `lg:bg-y` tie and source order decides — unlike v3, where `.dark &` always won. If a dark-mode color ever looks wrong on a responsive element, check this first.
+- **Classes applied at runtime must appear verbatim in a source file.** The scanner reads text, it does not execute code — a class assembled from variables never gets generated. This is why `carousel.js` styles its runtime-built dots with a plain CSS class instead of utilities.
 - **`scale-*` sets the CSS `scale` property, not `transform`.** `getComputedStyle(el).transform` reads `none` even when a scale is applied.
 - Renames already applied across the codebase, listed so old names don't creep back in: `shrink-0` / `grow-0` (not `flex-shrink-0` / `flex-grow-0`), `bg-linear-to-*` (not `bg-gradient-to-*`), `shadow-xs` (v3's `shadow-sm`), `rounded-sm` (v3's bare `rounded`).
 

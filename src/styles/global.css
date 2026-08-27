@@ -1,10 +1,10 @@
 @import 'tailwindcss';
 
-/* Dark mode is toggled by a `.dark` class on <html>, set by the inline script
-   in Layout.astro and by the ThemeToggle island. */
-@custom-variant dark (&:where(.dark, .dark *));
+/* The site is dark-only. There is no `.dark` class and no theme toggle:
+   every token below is the single palette the page renders with. */
 
 @theme {
+  /* Brand — teal. `primary-400` is the accent the design leans on. */
   --color-primary-50: #daeff6;
   --color-primary-100: #cae8f2;
   --color-primary-200: #a5d8e9;
@@ -17,6 +17,7 @@
   --color-primary-900: #113846;
   --color-primary-950: #0d2b35;
 
+  /* Brand — warm tan. `secondary-300` is the counterpoint accent. */
   --color-secondary-50: #f3e9e2;
   --color-secondary-100: #ecdcd0;
   --color-secondary-200: #dec3b0;
@@ -28,4 +29,37 @@
   --color-secondary-800: #533722;
   --color-secondary-900: #332115;
   --color-secondary-950: #20150d;
+
+  /* Surfaces, from the page background up to the raised icon tiles. */
+  --color-canvas: #060d11;
+  --color-surface: #0c161b;
+  --color-surface-sunken: #0a1418;
+  --color-surface-raised: #12222a;
+  --color-surface-warm: #1b2016;
+
+  /* Hairlines. */
+  --color-line: #1b2c34;
+  --color-line-strong: #243a44;
+
+  /* Text, brightest to faintest. */
+  --color-ink-bright: #f4fafb;
+  --color-ink: #e8f1f3;
+  --color-ink-soft: #dce9ed;
+  --color-ink-muted: #a9c0c9;
+  --color-ink-dim: #93aab3;
+  --color-ink-faint: #62787f;
+  --color-ink-ghost: #33505a;
+
+  /* Text sitting on top of an accent fill. */
+  --color-on-accent: #041016;
+
+  --font-display: 'Archivo Black', 'Arial Black', Impact, sans-serif;
+  --font-sans: 'Karla', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+/* The dotted rhythm rule that separates the hero from the pillars — a nod to
+   the guasá in the association's name. */
+@utility rhythm-rule {
+  background-image: radial-gradient(#2b4550 1.4px, transparent 1.5px);
+  background-size: 12px 12px;
 }

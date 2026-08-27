@@ -1,252 +1,151 @@
 ---
 import Container from './Container.astro'
-import Seven from './images/SeventhImage.astro'
-import Eight from './images/EighthImage.astro'
-import Nine from './images/NinethImage.astro'
-import Ten from './images/TenthImage.astro'
+
+// `tone` picks the accent a card is drawn with: teal for the cleaning
+// services, warm tan for gardening. The closing bullet of every card is the
+// promise rather than the task, so it always gets the warm accent.
+const services = [
+  {
+    title: 'Casas y Hogares',
+    tone: 'teal',
+    icon: `<path d='M3 10.5 12 3l9 7.5'></path><path d='M5 9.5V21h14V9.5'></path><path d='M10 21v-6h4v6'></path>`,
+    items: [
+      'Desinfección de Superficies.',
+      'Aspirado y Trapeado de Suelos.',
+      'Limpieza de Ventanas.',
+      'Productos Seguros y Eficaces.',
+    ],
+  },
+  {
+    title: 'Oficinas e Instituciones',
+    tone: 'teal',
+    icon: `<rect x='4' y='3' width='16' height='18' rx='1.5'></rect><path d='M9 7.5h2M13 7.5h2M9 12h2M13 12h2'></path><path d='M10 21v-4h4v4'></path>`,
+    items: [
+      'Desinfección de Áreas Comunes.',
+      'Limpieza de Superficies de Alto Contacto.',
+      'Mantenimiento de Baños y Cocinas.',
+      'Adaptación a sus Horarios y Necesidades.',
+    ],
+  },
+  {
+    title: 'Colchones y Muebles',
+    tone: 'teal',
+    icon: `<path d='M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3'></path><path d='M2 14a2 2 0 0 1 4 0v3h12v-3a2 2 0 0 1 4 0v5H2z'></path>`,
+    items: [
+      'Eliminación de Ácaros y Alérgenos.',
+      'Técnicas Avanzadas de Inyección - Extracción.',
+      'Remoción de Manchas, Olores y Suciedad.',
+      'Resultado Impecable con Confort Renovado.',
+    ],
+  },
+  {
+    title: 'Jardinería y Áreas Verdes',
+    tone: 'warm',
+    icon: `<path d='M20 4c0 8.5-5.4 13-13 13H4C4 8.5 9.4 4 17 4z'></path><path d='M4 20c2.4-6.2 6.4-9.4 11.5-11.5'></path>`,
+    items: [
+      'Poda, Desbroce y Diseño de Áreas Verdes.',
+      'Mantenimiento de Césped, Arbustos y Flores.',
+      'Herramientas de Última Generación.',
+      'Técnicas Ecológicas con Resultados Vibrantes.',
+    ],
+  },
+]
 ---
 
-<div id='servicios'>
+<section id='servicios'>
   <Container>
-    <div class='lg:w-3/4'>
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        viewBox='0 0 24 24'
-        fill='currentColor'
-        class='size-12 md:size-16 text-secondary-500 dark:text-primary-200'
-      >
-        <path
-          fill-rule='evenodd'
-          d='M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 01-1.422 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z'
-          clip-rule='evenodd'></path>
-      </svg>
+    <div class='flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16'>
+      <div class='shrink-0 lg:w-[400px]'>
+        <span
+          class='text-[11px] font-bold tracking-[0.2em] text-primary-400 uppercase sm:text-xs sm:tracking-[0.24em]'
+          >Servicios</span
+        >
+        <h2
+          class='mt-5 text-4xl leading-none text-ink-bright sm:text-5xl xl:text-[54px]'
+        >
+          Nuestros Servicios
+        </h2>
+      </div>
 
-      <h2
-        class='mt-8 xl:mt-12 text-4xl font-bold text-primary-700 dark:text-secondary-300 sm:text-5xl xl:text-6xl'
-      >
-        Nuestros Servicios
-      </h2>
-      <p
-        class='text-primary-900 dark:text-secondary-100 text-xl sm:text-2xl lg:text-3xl my-8 sm:my-12 xl:my-16'
-      >
-        Destacados por la
-
-        <span class='text-secondary-600 dark:text-primary-400'> calidad </span>
-
-        excepcional y
-
-        <span class='text-secondary-600 dark:text-primary-400'> atención </span>
-
-        meticulosa a los detalles.
-      </p>
-
-      <p
-        class='text-primary-900 dark:text-secondary-100 text-xl sm:text-2xl lg:text-3xl my-8 sm:my-12 xl:my-16'
-      >
-        Equipo de
-
-        <span class='text-primary-600 dark:text-secondary-300'>
-          profesionales
-        </span>
-
-        altamente capacitados con productos y equipos de
-
-        <span class='text-primary-600 dark:text-secondary-300'>
-          última generación.
-        </span>
-      </p>
-
-      <p
-        class='text-primary-900 dark:text-secondary-100 text-xl sm:text-2xl lg:text-3xl'
-      >
-        Nos
-
-        <span class='text-secondary-600 dark:text-primary-400'>
-          adaptamos
-        </span>
-
-        necesidades, ofreciendo una experiencia de limpieza y cuidado del jardín
-
-        <span class='text-primary-600 dark:text-secondary-300'>
-          inigualable.
-        </span>
-      </p>
+      <div class='flex flex-col gap-6 pt-1 lg:gap-[26px]'>
+        <p class='text-lg leading-relaxed text-ink-muted sm:text-xl xl:text-[21px]'>
+          Destacados por la <span class='text-primary-400'>calidad</span> excepcional
+          y <span class='text-primary-400'>atención</span> meticulosa a los detalles.
+        </p>
+        <p class='text-lg leading-relaxed text-ink-muted sm:text-xl xl:text-[21px]'>
+          Equipo de <span class='text-secondary-300'>profesionales</span> altamente
+          capacitados con productos y equipos de <span class='text-secondary-300'
+            >última generación</span
+          >.
+        </p>
+        <p class='text-lg leading-relaxed text-ink-muted sm:text-xl xl:text-[21px]'>
+          Nos <span class='text-primary-400'>adaptamos</span> a sus necesidades,
+          ofreciendo una experiencia de limpieza y cuidado del jardín <span
+            class='text-secondary-300'>inigualable</span
+          >.
+        </p>
+      </div>
     </div>
 
-    <div
-      class='mt-16 xl:mt-24 grid divide-x divide-y lg:grid-cols-2 divide-primary-600 dark:divide-secondary-200 overflow-hidden rounded-3xl border border-primary-600 dark:border-secondary-200'
-    >
-      <div
-        class='group relative flex py-8 sm:justify-center bg-gray-50 dark:bg-gray-800 transition hover:shadow-2xl hover:scale-105 lg:pointer-events-none'
-      >
-        <div class='relative space-y-8 py-12 p-8'>
-          <div class='max-w-16'>
-            <Seven />
-          </div>
+    <div class='mt-14 grid gap-5 sm:mt-16 lg:mt-24 lg:grid-cols-2'>
+      {
+        services.map((service, index) => (
+          <article class='flex flex-col gap-6 rounded-3xl border border-line bg-surface p-7 sm:p-9 lg:gap-[26px]'>
+            <div class='flex items-center justify-between'>
+              <span
+                class={
+                  service.tone === 'warm'
+                    ? 'flex size-13 items-center justify-center rounded-2xl bg-surface-warm text-secondary-300'
+                    : 'flex size-13 items-center justify-center rounded-2xl bg-surface-raised text-primary-400'
+                }
+              >
+                <svg
+                  class='size-6.5'
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  stroke-width='1.7'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  aria-hidden='true'
+                  set:html={service.icon}
+                />
+              </span>
+              <span class='font-display text-[13px] text-ink-ghost'>
+                {String(index + 1).padStart(2, '0')}
+              </span>
+            </div>
 
-          <div class='space-y-8 sm:space-y-12'>
-            <h5
-              class='text-3xl sm:text-4xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
-            >
-              Casas y Hogares
-            </h5>
+            <h3 class='text-2xl text-ink-bright sm:text-3xl'>{service.title}</h3>
 
-            <ul
-              class='text-primary-950/80 flex flex-col gap-8 text-xl sm:text-2xl dark:text-secondary-100/80'
-            >
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Desinfección de Superficies.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Aspirado y Treapeado de Suelos.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Limpieza de Ventanas.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 text-secondary-600 dark:marker:text-primary-300 dark:text-primary-300'
-              >
-                Productos Seguros y Eficaces.
-              </li>
+            <ul class='flex flex-col gap-3.5'>
+              {service.items.map((item, itemIndex) => {
+                const isClosing = itemIndex === service.items.length - 1
+                const dash =
+                  isClosing || service.tone === 'warm'
+                    ? 'text-secondary-300'
+                    : 'text-primary-400'
+
+                return (
+                  <li
+                    class={
+                      isClosing
+                        ? 'flex gap-3 text-base leading-relaxed font-bold text-ink-soft sm:text-[17px]'
+                        : 'flex gap-3 text-base leading-relaxed text-ink-dim sm:text-[17px]'
+                    }
+                  >
+                    <span class={dash} aria-hidden='true'>
+                      —
+                    </span>
+                    {item}
+                  </li>
+                )
+              })}
             </ul>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class='group relative flex py-8 sm:justify-center bg-gray-50 dark:bg-gray-800 transition hover:shadow-2xl hover:scale-105 lg:pointer-events-none'
-      >
-        <div class='relative space-y-8 py-12 p-8'>
-          <div class='max-w-16'>
-            <Eight />
-          </div>
-
-          <div class='space-y-8 sm:space-y-12'>
-            <h5
-              class='text-3xl sm:text-4xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
-            >
-              Oficinas e Instituciones
-            </h5>
-
-            <ul
-              class='text-primary-950/80 flex flex-col gap-8 text-xl sm:text-2xl dark:text-secondary-100/80'
-            >
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Desinfección de Áreas Comunes.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Limpieza de Superficies de Alto Contacto.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Mantenimiento de Baños y Cocinas.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 text-secondary-600 dark:marker:text-primary-300 dark:text-primary-300'
-              >
-                Adaptación a sus Horarios y Necesidades.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class='group relative flex py-8 sm:justify-center bg-gray-50 dark:bg-gray-800 transition hover:shadow-2xl hover:scale-105 lg:pointer-events-none'
-      >
-        <div class='relative space-y-8 py-12 p-8'>
-          <div class='max-w-16'>
-            <Nine />
-          </div>
-
-          <div class='space-y-8 sm:space-y-12'>
-            <h5
-              class='text-3xl sm:text-4xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
-            >
-              Colchones y Muebles
-            </h5>
-
-            <ul
-              class='text-primary-950/80 flex flex-col gap-8 text-xl sm:text-2xl dark:text-secondary-100/80'
-            >
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Eliminación de Ácaros y Alérgenos.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Técnicas Avanzadas de Inyección - Extracción.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Remoción de Manchas, Olores y Suciedad.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 text-secondary-600 dark:marker:text-primary-300 dark:text-primary-300'
-              >
-                Resultado Impecable con Confort Renovado.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class='group relative flex py-8 sm:justify-center bg-gray-50 dark:bg-gray-800 transition hover:shadow-2xl hover:scale-105 lg:pointer-events-none'
-      >
-        <div class='relative space-y-8 py-12 p-8'>
-          <div class='max-w-16'>
-            <Ten />
-          </div>
-
-          <div class='space-y-8 sm:space-y-12'>
-            <h5
-              class='text-3xl sm:text-4xl font-bold text-primary-700 dark:text-secondary-300 transition group-hover:text-secondary-500 dark:group-hover:text-primary-300'
-            >
-              Jardinería y Áreas Verdes
-            </h5>
-
-            <ul
-              class='text-primary-950/80 flex flex-col gap-8 text-xl sm:text-2xl dark:text-secondary-100/80'
-            >
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Poda, Desbroce y Diseño de Áreas Verdes.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Mantenimiento de Césped, Arbustos y Flores.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 dark:marker:text-primary-500'
-              >
-                Herramientas de Última Generación.
-              </li>
-              <li
-                class='list-disc list-inside marker:text-secondary-600 text-secondary-600 dark:marker:text-primary-300 dark:text-primary-300'
-              >
-                Técnicas Ecológicas con Resultados Vibrantes.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+          </article>
+        ))
+      }
     </div>
   </Container>
-</div>
+</section>

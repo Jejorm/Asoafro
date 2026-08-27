@@ -14,11 +14,11 @@
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.4",
-    "@fontsource/oxygen": "^5.3.0",
+    "@fontsource/archivo-black": "^5.3.0",
+    "@fontsource/karla": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.2.8",
     "embla-carousel": "^8.6.0",
-    "embla-carousel-auto-height": "^8.6.0",
     "embla-carousel-autoplay": "^8.6.0",
     "preact": "^10.29.8",
     "sharp": "^0.35.4",

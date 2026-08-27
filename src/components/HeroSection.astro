@@ -1,126 +1,109 @@
 ---
 import Container from './Container.astro'
+
+const pillars = [
+  'Precios Competitivos',
+  'Enfocados en la Eficiencia',
+  'Aseguramos su Satisfacción',
+]
 ---
 
-<div class='relative' id='home'>
+<section class='relative overflow-hidden' id='home'>
+  <!-- Concentric rings: the bombo and the guasá the association is named after. -->
   <div
     aria-hidden='true'
-    class='absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20'
+    class='pointer-events-none absolute -top-44 -right-36 hidden opacity-60 lg:block'
   >
-    <div
-      class='blur-[106px] h-56 bg-linear-to-br from-secondary-200 to-secondary-50 dark:from-primary-500 dark:to-primary-800'
-    >
-    </div>
-    <div
-      class='blur-[106px] h-32 bg-linear-to-r from-secondary-300 to-secondary-100 dark:from-primary-400 dark:to-primary-900'
-    >
-    </div>
+    <svg viewBox='0 0 640 640' width='640' height='640' fill='none'>
+      <circle cx='320' cy='320' r='312' stroke='#152a33' stroke-width='1.5'
+      ></circle>
+      <circle cx='320' cy='320' r='252' stroke='#193440' stroke-width='1.5'
+      ></circle>
+      <circle cx='320' cy='320' r='192' stroke='#1e3f4d' stroke-width='1.5'
+      ></circle>
+      <circle cx='320' cy='320' r='132' stroke='#244b5b' stroke-width='1.5'
+      ></circle>
+      <circle cx='320' cy='320' r='72' stroke='#2c5a6d' stroke-width='1.5'
+      ></circle>
+      <circle cx='320' cy='320' r='24' fill='#122630'></circle>
+    </svg>
   </div>
+
   <Container>
-    <div class='relative pt-40 ml-auto'>
-      <div class='lg:w-2/3 text-center mx-auto'>
-        <h1
-          class='text-primary-800 dark:text-secondary-200 font-bold text-4xl sm:text-5xl xl:text-6xl'
-        >
-          Afro-Decendientes del Azuay
-          <span class='text-primary-600 dark:text-secondary-400'
-            >“Guasá Y Bombo”</span
+    <div class='relative pt-16 sm:pt-24 lg:pt-28'>
+      <div class='flex max-w-4xl flex-col gap-7 sm:gap-8'>
+        <div class='flex items-center gap-4'>
+          <span class='block h-0.5 w-8 shrink-0 bg-primary-400 sm:w-12'></span>
+          <span
+            class='text-[11px] font-bold tracking-[0.2em] text-ink-muted uppercase sm:text-xs sm:tracking-[0.24em]'
+            >Afro-Descendientes del Azuay · «Guasá y Bombo»</span
           >
-        </h1>
-        <h2
-          class='py-8 my-16 text-primary-900 dark:text-secondary-100 text-xl sm:text-2xl xl:text-3xl'
+        </div>
+
+        <h1
+          class='text-[2.25rem] leading-[1.05] text-ink-bright sm:text-5xl lg:text-6xl lg:leading-[0.98] xl:text-[82px] xl:leading-[0.96]'
         >
-          <span class='inline-block mb-4'>
-            Haz brillar tu espacio con <span
-              class='text-primary-600 dark:text-secondary-300'>AsoAfro.</span
-            > Nuestros servicios de
+          Haz brillar tu espacio con <span class='text-primary-400'
+            >limpieza</span
+          > y <span class='text-secondary-300'>jardinería</span> que superan expectativas.
+        </h1>
 
-            <span class='text-secondary-600 dark:text-primary-400'>
-              limpieza
-            </span>
+        <p class='max-w-2xl text-lg leading-relaxed text-ink-dim sm:text-xl xl:text-[22px]'>
+          Descubre la diferencia y disfruta de un ambiente impecable. Casas,
+          oficinas, colchones, muebles y áreas verdes en todo el Azuay.
+        </p>
 
-            y
-
-            <span class='text-secondary-600 dark:text-primary-400'>
-              jardinería
-            </span>
-
-            <span class='inline-block mb-4 lg:mb-12'
-              >que superan expectativas.
-            </span>
-          </span>
-          <span class='inline-block w-full'>
-            Descubre la <span class='text-secondary-600 dark:text-primary-400'
-              >diferencia</span
-            >
-            y disfruta de un ambiente
-            <span class='text-secondary-600 dark:text-primary-400'
-              >impecable.</span
-            >
-          </span>
-        </h2>
-        <div class='mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6'>
+        <div class='mt-2 flex flex-col gap-4 sm:flex-row sm:items-center'>
           <a
             href='#formulario'
-            class='relative flex h-9 w-full border rounded-full items-center justify-center px-8 xl:px-12 xl:py-5 before:absolute before:inset-0 before:rounded-full before:bg-primary-100/80 dark:before:bg-secondary-800/80 before:transition before:duration-150 hover:before:bg-primary-100 dark:hover:before:bg-secondary-700/80 border-secondary-600 dark:border-secondary-200 hover:scale-105 active:duration-75 active:before:scale-95 sm:w-max transition duration-300'
+            class='flex items-center justify-center gap-2.5 rounded-full bg-primary-400 px-8 py-4 text-base font-bold text-on-accent transition duration-150 hover:bg-primary-300 active:scale-95 sm:px-8 sm:text-[17px]'
           >
-            <span
-              class='relative font-semibold text-primary-900 dark:text-secondary-100 lg:text-xl'
+            Contáctanos
+            <svg
+              class='size-[17px] shrink-0'
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 24 24'
+              fill='none'
+              stroke='currentColor'
+              stroke-width='2.4'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              aria-hidden='true'
             >
-              Contáctanos</span
-            >
+              <path d='M5 12h14'></path>
+              <path d='m12 5 7 7-7 7'></path>
+            </svg>
           </a>
           <a
             href='#servicios'
-            class='relative flex h-9 w-full items-center justify-center px-8 xl:px-12 xl:py-5 before:absolute before:inset-0 before:rounded-full dark:before:bg-linear-to-b before:transition before:duration-300 active:duration-75 active:before:scale-95 border-secondary-600 before:border-secondary-200 dark:before:border-gray-700 border rounded-full dark:border-secondary-200 before:bg-secondary-100 dark:before:bg-gray-800 sm:w-max'
+            class='flex items-center justify-center rounded-full border border-line-strong px-8 py-4 text-base font-bold text-ink transition duration-150 hover:border-primary-400 hover:text-primary-400 active:scale-95 sm:text-[17px]'
+            >Nuestros Servicios</a
           >
-            <span
-              class='relative text-base font-semibold text-primary-800 dark:text-secondary-100 hover:text-primary-800 dark:hover:text-secondary-300 lg:text-xl'
-              >Nuestros Servicios</span
-            >
-          </a>
-        </div>
-        <div
-          class='py-8 mt-24 mb-2 border-y border-primary-600 dark:border-secondary-200 flex flex-col justify-center items-center gap-16 lg:flex-row lg:justify-between'
-        >
-          <div class='text-left'>
-            <h6
-              class='text-xl font-semibold text-center text-secondary-700 dark:text-primary-400'
-            >
-              Precios Competitivos
-            </h6>
-            <!-- <p
-              class='mt-4 text-xl text-center text-primary-700/90 dark:text-secondary-300'
-            >
-              Los más competitivos
-            </p> -->
-          </div>
-          <div class='text-left'>
-            <h6
-              class='text-xl lg:text-xl text-center font-semibold text-secondary-700 dark:text-primary-400'
-            >
-              Enfocados en la Eficiencia
-            </h6>
-            <!-- <p
-              class='mt-4 text-xl text-center text-primary-700/90 dark:text-secondary-300'
-            >
-              La calidad es prioridad
-            </p> -->
-          </div>
-          <div class='text-left'>
-            <h6
-              class='text-xl text-center font-semibold text-secondary-700 dark:text-primary-400'
-            >
-              Aseguramos su Satisfacción
-            </h6>
-            <!-- <p
-              class='mt-4 text-xl text-center text-primary-700/90 dark:text-secondary-300'
-            >
-              Una Experiencia Inigualable
-            </p> -->
-          </div>
         </div>
       </div>
+
+      <div
+        aria-hidden='true'
+        class='rhythm-rule mt-14 h-3 opacity-70 sm:mt-16 lg:mt-[72px]'
+      >
+      </div>
+
+      <ul class='grid divide-y divide-line border-b border-line lg:grid-cols-3 lg:divide-x lg:divide-y-0'>
+        {
+          pillars.map((pillar, index) => (
+            <li
+              class='flex items-center gap-4 py-6 lg:py-8 lg:not-first:pl-10'
+            >
+              <span class='font-display text-sm text-primary-400'>
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span class='text-base font-bold text-ink sm:text-lg xl:text-[19px]'>
+                {pillar}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </Container>
-</div>
+</section>

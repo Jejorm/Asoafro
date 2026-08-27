@@ -1,6 +1,5 @@
 ---
 import Container from './Container.astro'
-import ThemeToggle from './theme/ThemeToggle'
 
 const links = [
   {
@@ -11,10 +10,6 @@ const links = [
     to: '/#galeria',
     label: 'Galería',
   },
-  {
-    to: '/#formulario',
-    label: 'Contáctanos',
-  },
 ]
 ---
 
@@ -24,8 +19,6 @@ const links = [
   const hamburger = document.querySelector('#hamburger')
   const layer = document.querySelector('#navLayer')
   const links = [...navlinks.querySelector('ul').children]
-
-  const windowWidth = window.innerWidth
 
   function toggleNavlinks() {
     if (isToggled) {
@@ -48,6 +41,7 @@ const links = [
       layer.classList.remove('origin-top', 'scale-y-100')
     }
   }
+
   hamburger.addEventListener('click', () => {
     isToggled = !isToggled
     toggleNavlinks()
@@ -55,87 +49,92 @@ const links = [
 
   links.forEach((link) => {
     link.addEventListener('click', () => {
-      isToggled = !isToggled
+      isToggled = false
       toggleNavlinks()
     })
   })
 </script>
 
-<header>
-  <nav
-    class='absolute z-10 w-full border-b border-primary-800/30 dark:border-secondary-200/30'
-  >
+<header class='relative z-20 border-b border-line'>
+  <nav class='relative'>
     <Container>
-      <div
-        class='relative flex lg:flex-wrap items-center justify-between gap-6 sm:gap-8 py-4 lg:gap-0 lg:py-4'
-      >
-        <div class='relative z-20 flex w-full justify-between lg:w-max'>
-          <a
-            href='/#home'
-            aria-label='logo'
-            class='flex items-center space-x-2'
-          >
+      <div class='relative flex items-center justify-between gap-6 py-4 lg:py-5'>
+        <div class='relative z-20 flex w-full items-center justify-between lg:w-max'>
+          <a href='/#home' aria-label='AsoAfro' class='flex items-baseline gap-2.5'>
             <span
-              class='text-3xl font-bold transition-all text-primary-700 dark:text-secondary-300 hover:scale-105 active:duration-300 active:scale-95'
+              class='font-display text-2xl tracking-tight text-ink-bright transition hover:scale-105 active:scale-95'
               >AsoAfro</span
             >
+            <span class='size-[7px] rounded-full bg-primary-400'></span>
           </a>
 
           <div class='relative flex max-h-10 items-center lg:hidden'>
-            <button
-              aria-label='humburger'
-              id='hamburger'
-              class='relative -mr-6 p-6'
-            >
+            <button aria-label='Menú' id='hamburger' class='relative -mr-6 p-6'>
               <div
                 aria-hidden='true'
                 id='line'
-                class='m-auto h-1 w-8 sm:w-10 rounded-sm bg-primary-700 transition duration-300 dark:bg-secondary-400'
+                class='m-auto h-0.5 w-7 rounded-sm bg-ink transition duration-300'
               >
               </div>
               <div
                 aria-hidden='true'
                 id='line2'
-                class='m-auto h-1 mt-2 w-8 sm:w-10 rounded-sm bg-primary-700 transition duration-300 dark:bg-secondary-400'
+                class='m-auto mt-2 h-0.5 w-7 rounded-sm bg-ink transition duration-300'
               >
               </div>
             </button>
           </div>
         </div>
+
         <div
           id='navLayer'
           aria-hidden='true'
-          class='fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-secondary-50 backdrop-blur-3xl transition duration-500 dark:bg-primary-950/70 lg:hidden'
+          class='fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-canvas/90 backdrop-blur-xl transition duration-500 lg:hidden'
         >
         </div>
+
         <div
           id='navlinks'
-          class='invisible absolute top-full left-0 z-20 w-full origin-top-right translate-y-1 scale-90 flex-col flex-wrap justify-end gap-6 rounded-3xl border border-secondary-200 dark:border-primary-900 p-8 opacity-0 transition-all duration-300 bg-secondary-100 lg:bg-secondary-200/40 dark:bg-primary-950 lg:visible lg:relative lg:flex lg:w-6/12 lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:p-0 lg:opacity-100'
+          class='invisible absolute top-full left-0 z-20 w-full origin-top-right translate-y-1 scale-90 flex-col justify-end gap-6 rounded-3xl border border-line bg-surface p-8 opacity-0 transition-all duration-300 lg:visible lg:relative lg:flex lg:w-max lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100'
         >
-          <div class='w-full lg:w-auto lg:pr-4 lg:pt-0'>
-            <ul
-              class='flex flex-col items-center justify-center gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-md'
-            >
-              {
-                links.map((link) => (
-                  <li>
-                    <a
-                      href={link.to}
-                      class='hover:text-primary block transition duration-150 text-primary-900 hover:text-primary-600 dark:text-secondary-100 dark:hover:text-secondary-300 text-xl md:px-4'
-                    >
-                      <span>{link.label}</span>
-                    </a>
-                  </li>
-                ))
-              }
-              <li class='hidden lg:block'>
-                <ThemeToggle client:only='preact' />
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class='lg:hidden'>
-          <ThemeToggle client:only='preact' />
+          <ul
+            class='flex flex-col items-center justify-center gap-6 lg:flex-row lg:items-center lg:gap-9'
+          >
+            {
+              links.map((link) => (
+                <li>
+                  <a
+                    href={link.to}
+                    class='block text-lg text-ink-muted transition duration-150 hover:text-primary-400 lg:text-[15px]'
+                  >
+                    <span>{link.label}</span>
+                  </a>
+                </li>
+              ))
+            }
+            <li>
+              <a
+                href='/#formulario'
+                class='flex items-center gap-2.5 rounded-full bg-primary-400 px-6 py-3 text-lg font-bold text-on-accent transition duration-150 hover:bg-primary-300 lg:px-5 lg:py-2.5 lg:text-[15px]'
+              >
+                Contáctanos
+                <svg
+                  class='size-4 shrink-0'
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  stroke-width='2.4'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  aria-hidden='true'
+                >
+                  <path d='M5 12h14'></path>
+                  <path d='m12 5 7 7-7 7'></path>
+                </svg>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </Container>
@@ -145,18 +144,11 @@ const links = [
 <style>
   @reference '../styles/global.css';
 
-  #toggle_nav:checked ~ div #hamburger #line {
-    @apply translate-y-1.5 rotate-45;
-  }
-
-  #toggle_nav:checked ~ div #hamburger #line2 {
-    @apply -translate-y-1.5 -rotate-45;
-  }
-
   .toggled div:first-child {
-    @apply translate-y-1.5 rotate-45;
+    @apply translate-y-[5px] rotate-45;
   }
+
   .toggled div:last-child {
-    @apply -translate-y-1.5 -rotate-45;
+    @apply -translate-y-[5px] -rotate-45;
   }
 </style>
