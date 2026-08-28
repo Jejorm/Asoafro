@@ -1,8 +1,9 @@
 ---
 import Container from './Container.astro'
+import Eyebrow from './Eyebrow.astro'
 
 const fieldClass =
-  'w-full rounded-xl border border-line bg-surface-sunken px-4 py-4 text-base text-ink transition duration-150 outline-none focus:border-primary-400 sm:text-[17px]'
+  'w-full rounded-field border border-line bg-surface-sunken px-4 py-4 text-base text-ink transition duration-150 outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-400 sm:text-[17px]'
 const labelClass =
   'text-xs font-bold tracking-[0.08em] text-ink-dim uppercase sm:text-sm'
 ---
@@ -10,14 +11,11 @@ const labelClass =
 <section id='formulario'>
   <Container>
     <div
-      class='flex flex-col gap-10 rounded-3xl border border-line bg-surface p-6 sm:p-10 lg:flex-row lg:gap-16 lg:p-15'
+      class='reveal flex flex-col gap-10 rounded-card border border-line bg-surface p-6 sm:p-10 lg:flex-row lg:gap-16 lg:p-15'
     >
       <div class='flex shrink-0 flex-col gap-6 lg:w-[380px]'>
-        <span
-          class='text-[11px] font-bold tracking-[0.2em] text-primary-400 uppercase sm:text-xs sm:tracking-[0.24em]'
-          >Contacto</span
-        >
-        <h2 class='text-4xl leading-none text-ink-bright sm:text-5xl xl:text-[52px]'>
+        <Eyebrow text='Contacto' />
+        <h2 class='text-4xl leading-none text-ink-bright sm:text-5xl xl:text-[54px]'>
           Contáctanos
         </h2>
         <p class='text-base leading-relaxed text-ink-dim sm:text-lg'>
@@ -31,7 +29,7 @@ const labelClass =
           href='https://wa.me/593983514771'
           target='_blank'
           rel='noopener'
-          class='flex items-center gap-3 text-base font-bold text-[#24d165] transition duration-150 hover:opacity-80 sm:text-[17px]'
+          class='flex items-center gap-3 text-base font-bold text-whatsapp transition duration-150 hover:opacity-80 sm:text-[17px]'
         >
           <svg
             class='size-5.5 shrink-0'
@@ -115,9 +113,9 @@ const labelClass =
 
         <button
           type='submit'
-          class='flex cursor-pointer items-center justify-center gap-2.5 self-stretch rounded-full bg-primary-400 px-9 py-4 text-base font-bold text-on-accent transition duration-150 hover:bg-primary-300 active:scale-95 sm:self-start sm:text-[17px]'
+          class='flex cursor-pointer items-center justify-center gap-2.5 self-stretch rounded-full bg-primary-400 px-9 py-4 text-base font-bold text-on-accent transition duration-150 hover:bg-primary-300 active:scale-95 sm:text-[17px]'
         >
-          Enviar
+          Enviar solicitud
           <svg
             class='size-[17px] shrink-0'
             xmlns='http://www.w3.org/2000/svg'

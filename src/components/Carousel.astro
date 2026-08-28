@@ -1,5 +1,6 @@
 ---
 import Container from './Container.astro'
+import Eyebrow from './Eyebrow.astro'
 import FirstImage from './images/FirstImage.astro'
 import SecondImage from './images/SecondImage.astro'
 import ThirdImage from './images/ThirdImage.astro'
@@ -31,23 +32,22 @@ const slides = [
       <div
         class='mb-8 flex flex-col gap-6 sm:mb-10 sm:flex-row sm:items-end sm:justify-between'
       >
-        <div>
-          <span
-            class='text-[11px] font-bold tracking-[0.2em] text-primary-400 uppercase sm:text-xs sm:tracking-[0.24em]'
-            >Galería</span
-          >
-          <h2
-            class='mt-5 text-4xl leading-none text-ink-bright sm:text-5xl xl:text-[54px]'
-          >
+        <div class='flex flex-col gap-5'>
+          <Eyebrow text='Galería' />
+          <h2 class='text-4xl leading-none text-ink-bright sm:text-5xl xl:text-[54px]'>
             Nuestra Galería
           </h2>
+          <p class='max-w-md text-base leading-relaxed text-ink-muted sm:text-lg'>
+            Trabajos reales de limpieza y jardinería en casas, oficinas y áreas
+            verdes de todo el Azuay.
+          </p>
         </div>
 
-        <div class='hidden items-center gap-3 sm:flex'>
+        <div class='flex items-center gap-3 self-end'>
           <button
             type='button'
             aria-label='Imagen anterior'
-            class='embla__button embla__button--prev flex size-14 cursor-pointer items-center justify-center rounded-full border border-line-strong text-ink transition duration-150 hover:border-primary-400 hover:text-primary-400 active:scale-95'
+            class='embla__button embla__button--prev flex size-12 cursor-pointer items-center justify-center rounded-full border border-line-strong text-ink transition duration-150 hover:border-primary-400 hover:text-primary-400 active:scale-95 sm:size-14'
           >
             <svg
               class='size-4.5'
@@ -66,7 +66,7 @@ const slides = [
           <button
             type='button'
             aria-label='Imagen siguiente'
-            class='embla__button embla__button--next flex size-14 cursor-pointer items-center justify-center rounded-full bg-primary-400 text-on-accent transition duration-150 hover:bg-primary-300 active:scale-95'
+            class='embla__button embla__button--next flex size-12 cursor-pointer items-center justify-center rounded-full bg-primary-400 text-on-accent transition duration-150 hover:bg-primary-300 active:scale-95 sm:size-14'
           >
             <svg
               class='size-4.5'
@@ -86,7 +86,7 @@ const slides = [
       </div>
 
       <div
-        class='embla__viewport h-[240px] overflow-hidden rounded-2xl border border-line sm:h-[360px] sm:rounded-3xl lg:h-[520px] xl:h-[560px]'
+        class='embla__viewport reveal h-[240px] overflow-hidden rounded-card border border-line sm:h-[360px] lg:h-[520px] xl:h-[560px]'
       >
         <div class='embla__container flex h-full touch-pan-y'>
           {

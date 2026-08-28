@@ -130,6 +130,10 @@ const addNavBtnListeners = (emblaApi, ...navButtons) => {
 
 const OPTIONS = { loop: true }
 
+const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+).matches
+
 const emblaNode = document.querySelector('.embla')
 const viewportNode = emblaNode.querySelector('.embla__viewport')
 const prevBtnNode = emblaNode.querySelector('.embla__button--prev')
@@ -137,9 +141,11 @@ const nextBtnNode = emblaNode.querySelector('.embla__button--next')
 const dotsNode = emblaNode.querySelector('.embla__dots')
 const snapDisplayNode = emblaNode.querySelector('.embla__selected-snap-display')
 
-const emblaApi = EmblaCarousel(viewportNode, OPTIONS, [
-    Autoplay({ playOnInit: true, delay: 3000 }),
-])
+const emblaApi = EmblaCarousel(
+    viewportNode,
+    OPTIONS,
+    prefersReducedMotion ? [] : [Autoplay({ playOnInit: true, delay: 3000 })]
+)
 
 const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
     emblaApi,

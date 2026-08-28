@@ -1,5 +1,7 @@
 ---
 import Container from './Container.astro'
+
+const year = new Date().getFullYear()
 ---
 
 <footer class='pt-20 pb-14'>
@@ -7,7 +9,7 @@ import Container from './Container.astro'
     <div
       class='flex flex-col items-center justify-between gap-6 border-t border-line pt-8 sm:flex-row'
     >
-      <p class='text-base text-ink-faint'>&copy; AsoAfro 2025</p>
+      <p class='text-base text-ink-faint'>&copy; {year} AsoAfro</p>
 
       <nav class='flex items-center gap-6' aria-label='Redes sociales'>
         <a
@@ -15,7 +17,7 @@ import Container from './Container.astro'
           target='_blank'
           rel='noopener'
           aria-label='WhatsApp'
-          class='text-[#24d165] transition duration-150 hover:scale-110'
+          class='text-whatsapp transition duration-150 hover:scale-110'
         >
           <svg
             class='size-6.5'

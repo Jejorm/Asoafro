@@ -35,11 +35,15 @@
   --color-surface: #0c161b;
   --color-surface-sunken: #0a1418;
   --color-surface-raised: #12222a;
-  --color-surface-warm: #1b2016;
+  /* Warm counterpart of `surface-raised` — the gardening icon tile. Kept a
+     step lighter than the plain surface so the tile reads against the card. */
+  --color-surface-warm: #2a2016;
 
-  /* Hairlines. */
+  /* Hairlines. `line-strong` doubles as the border of outline-style controls
+     (ghost buttons, carousel arrows/dots), so it clears the 3:1 non-text
+     contrast bar against `canvas`. */
   --color-line: #1b2c34;
-  --color-line-strong: #243a44;
+  --color-line-strong: #456a77;
 
   /* Text, brightest to faintest. */
   --color-ink-bright: #f4fafb;
@@ -47,11 +51,24 @@
   --color-ink-soft: #dce9ed;
   --color-ink-muted: #a9c0c9;
   --color-ink-dim: #93aab3;
-  --color-ink-faint: #62787f;
-  --color-ink-ghost: #33505a;
+  --color-ink-faint: #7c929a;
+  --color-ink-ghost: #6b8b95;
 
   /* Text sitting on top of an accent fill. */
   --color-on-accent: #041016;
+
+  /* WhatsApp brand green — the contact links in the form and footer. */
+  --color-whatsapp: #24d165;
+
+  /* Dot colour of the `rhythm-rule` band. */
+  --color-rhythm-dot: #2b4550;
+
+  /* Corner radius scale. `field` for inputs, `tile` for the small icon
+     squares, `card` for panels, cards and the carousel viewport. Buttons use
+     `rounded-full`. */
+  --radius-field: 0.75rem;
+  --radius-tile: 1rem;
+  --radius-card: 1.5rem;
 
   --font-display: 'Archivo Black', 'Arial Black', Impact, sans-serif;
   --font-sans: 'Karla', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
@@ -60,6 +77,9 @@
 /* The dotted rhythm rule that separates the hero from the pillars — a nod to
    the guasá in the association's name. */
 @utility rhythm-rule {
-  background-image: radial-gradient(#2b4550 1.4px, transparent 1.5px);
+  background-image: radial-gradient(
+    var(--color-rhythm-dot) 1.4px,
+    transparent 1.5px
+  );
   background-size: 12px 12px;
 }

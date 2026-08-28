@@ -1,5 +1,6 @@
 ---
 import Container from './Container.astro'
+import Eyebrow from './Eyebrow.astro'
 
 // `tone` picks the accent a card is drawn with: teal for the cleaning
 // services, warm tan for gardening. The closing bullet of every card is the
@@ -54,15 +55,12 @@ const services = [
 
 <section id='servicios'>
   <Container>
-    <div class='flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16'>
-      <div class='shrink-0 lg:w-[400px]'>
-        <span
-          class='text-[11px] font-bold tracking-[0.2em] text-primary-400 uppercase sm:text-xs sm:tracking-[0.24em]'
-          >Servicios</span
-        >
-        <h2
-          class='mt-5 text-4xl leading-none text-ink-bright sm:text-5xl xl:text-[54px]'
-        >
+    <div
+      class='reveal flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16'
+    >
+      <div class='flex shrink-0 flex-col gap-5 lg:w-[400px]'>
+        <Eyebrow text='Servicios' />
+        <h2 class='text-4xl leading-none text-ink-bright sm:text-5xl xl:text-[54px]'>
           Nuestros Servicios
         </h2>
       </div>
@@ -90,32 +88,30 @@ const services = [
     <div class='mt-14 grid gap-5 sm:mt-16 lg:mt-24 lg:grid-cols-2'>
       {
         services.map((service, index) => (
-          <article class='flex flex-col gap-6 rounded-3xl border border-line bg-surface p-7 sm:p-9 lg:gap-[26px]'>
-            <div class='flex items-center justify-between'>
-              <span
-                class={
-                  service.tone === 'warm'
-                    ? 'flex size-13 items-center justify-center rounded-2xl bg-surface-warm text-secondary-300'
-                    : 'flex size-13 items-center justify-center rounded-2xl bg-surface-raised text-primary-400'
-                }
-              >
-                <svg
-                  class='size-6.5'
-                  xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='currentColor'
-                  stroke-width='1.7'
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  aria-hidden='true'
-                  set:html={service.icon}
-                />
-              </span>
-              <span class='font-display text-[13px] text-ink-ghost'>
-                {String(index + 1).padStart(2, '0')}
-              </span>
-            </div>
+          <article
+            class='reveal flex flex-col gap-6 rounded-card border border-line bg-surface p-7 transition-colors duration-150 hover:border-line-strong sm:p-9 lg:gap-[26px]'
+            style={`--reveal-delay: ${index * 70}ms`}
+          >
+            <span
+              class={
+                service.tone === 'warm'
+                  ? 'flex size-13 items-center justify-center rounded-tile bg-surface-warm text-secondary-300'
+                  : 'flex size-13 items-center justify-center rounded-tile bg-surface-raised text-primary-400'
+              }
+            >
+              <svg
+                class='size-6.5'
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                stroke-width='1.7'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                aria-hidden='true'
+                set:html={service.icon}
+              />
+            </span>
 
             <h3 class='text-2xl text-ink-bright sm:text-3xl'>{service.title}</h3>
 

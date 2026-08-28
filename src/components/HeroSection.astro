@@ -1,5 +1,7 @@
 ---
 import Container from './Container.astro'
+import Eyebrow from './Eyebrow.astro'
+import HeroImage from './images/HeroImage.astro'
 
 const pillars = [
   'Precios Competitivos',
@@ -8,77 +10,63 @@ const pillars = [
 ]
 ---
 
-<section class='relative overflow-hidden' id='home'>
-  <!-- Concentric rings: the bombo and the guasá the association is named after. -->
-  <div
-    aria-hidden='true'
-    class='pointer-events-none absolute -top-44 -right-36 hidden opacity-60 lg:block'
-  >
-    <svg viewBox='0 0 640 640' width='640' height='640' fill='none'>
-      <circle cx='320' cy='320' r='312' stroke='#152a33' stroke-width='1.5'
-      ></circle>
-      <circle cx='320' cy='320' r='252' stroke='#193440' stroke-width='1.5'
-      ></circle>
-      <circle cx='320' cy='320' r='192' stroke='#1e3f4d' stroke-width='1.5'
-      ></circle>
-      <circle cx='320' cy='320' r='132' stroke='#244b5b' stroke-width='1.5'
-      ></circle>
-      <circle cx='320' cy='320' r='72' stroke='#2c5a6d' stroke-width='1.5'
-      ></circle>
-      <circle cx='320' cy='320' r='24' fill='#122630'></circle>
-    </svg>
-  </div>
-
+<section id='home'>
   <Container>
-    <div class='relative pt-16 sm:pt-24 lg:pt-28'>
-      <div class='flex max-w-4xl flex-col gap-7 sm:gap-8'>
-        <div class='flex items-center gap-4'>
-          <span class='block h-0.5 w-8 shrink-0 bg-primary-400 sm:w-12'></span>
-          <span
-            class='text-[11px] font-bold tracking-[0.2em] text-ink-muted uppercase sm:text-xs sm:tracking-[0.24em]'
-            >Afro-Descendientes del Azuay · «Guasá y Bombo»</span
+    <div class='pt-16 sm:pt-24 lg:pt-28'>
+      <div
+        class='grid items-center gap-10 lg:grid-cols-[1fr_minmax(0,440px)] lg:gap-16'
+      >
+        <div class='flex max-w-2xl flex-col gap-7 sm:gap-8'>
+          <Eyebrow text='Afro-Descendientes del Azuay · «Guasá y Bombo»' />
+
+          <h1
+            class='text-[2.5rem] leading-[1.04] text-ink-bright sm:text-6xl lg:text-[68px] lg:leading-[0.98] xl:text-[80px] xl:leading-[0.95]'
           >
+            Haz brillar tu espacio.
+          </h1>
+
+          <p
+            class='max-w-xl text-lg leading-relaxed text-ink-dim sm:text-xl xl:text-[22px]'
+          >
+            <span class='text-primary-400'>Limpieza</span> y <span
+              class='text-secondary-300'>jardinería</span
+            > que superan expectativas. Casas, oficinas, colchones, muebles y áreas
+            verdes en todo el Azuay.
+          </p>
+
+          <div class='mt-2 flex flex-col gap-4 sm:flex-row sm:items-center'>
+            <a
+              href='#formulario'
+              class='flex items-center justify-center gap-2.5 rounded-full bg-primary-400 px-8 py-4 text-base font-bold text-on-accent transition duration-150 hover:bg-primary-300 active:scale-95 sm:px-8 sm:text-[17px]'
+            >
+              Contáctanos
+              <svg
+                class='size-[17px] shrink-0'
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                stroke-width='2.4'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                aria-hidden='true'
+              >
+                <path d='M5 12h14'></path>
+                <path d='m12 5 7 7-7 7'></path>
+              </svg>
+            </a>
+            <a
+              href='#servicios'
+              class='flex items-center justify-center rounded-full border border-line-strong px-8 py-4 text-base font-bold text-ink transition duration-150 hover:border-primary-400 hover:text-primary-400 active:scale-95 sm:text-[17px]'
+              >Nuestros Servicios</a
+            >
+          </div>
         </div>
 
-        <h1
-          class='text-[2.25rem] leading-[1.05] text-ink-bright sm:text-5xl lg:text-6xl lg:leading-[0.98] xl:text-[82px] xl:leading-[0.96]'
+        <div
+          class='hero-photo reveal relative aspect-[16/10] overflow-hidden rounded-card border border-line lg:aspect-[4/3]'
         >
-          Haz brillar tu espacio con <span class='text-primary-400'
-            >limpieza</span
-          > y <span class='text-secondary-300'>jardinería</span> que superan expectativas.
-        </h1>
-
-        <p class='max-w-2xl text-lg leading-relaxed text-ink-dim sm:text-xl xl:text-[22px]'>
-          Descubre la diferencia y disfruta de un ambiente impecable. Casas,
-          oficinas, colchones, muebles y áreas verdes en todo el Azuay.
-        </p>
-
-        <div class='mt-2 flex flex-col gap-4 sm:flex-row sm:items-center'>
-          <a
-            href='#formulario'
-            class='flex items-center justify-center gap-2.5 rounded-full bg-primary-400 px-8 py-4 text-base font-bold text-on-accent transition duration-150 hover:bg-primary-300 active:scale-95 sm:px-8 sm:text-[17px]'
-          >
-            Contáctanos
-            <svg
-              class='size-[17px] shrink-0'
-              xmlns='http://www.w3.org/2000/svg'
-              viewBox='0 0 24 24'
-              fill='none'
-              stroke='currentColor'
-              stroke-width='2.4'
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              aria-hidden='true'
-            >
-              <path d='M5 12h14'></path>
-              <path d='m12 5 7 7-7 7'></path>
-            </svg>
-          </a>
-          <a
-            href='#servicios'
-            class='flex items-center justify-center rounded-full border border-line-strong px-8 py-4 text-base font-bold text-ink transition duration-150 hover:border-primary-400 hover:text-primary-400 active:scale-95 sm:text-[17px]'
-            >Nuestros Servicios</a
-          >
+          <HeroImage />
         </div>
       </div>
 
@@ -88,15 +76,16 @@ const pillars = [
       >
       </div>
 
-      <ul class='grid divide-y divide-line border-b border-line lg:grid-cols-3 lg:divide-x lg:divide-y-0'>
+      <ul
+        class='grid divide-y divide-line border-b border-line lg:grid-cols-3 lg:divide-x lg:divide-y-0'
+      >
         {
-          pillars.map((pillar, index) => (
-            <li
-              class='flex items-center gap-4 py-6 lg:py-8 lg:not-first:pl-10'
-            >
-              <span class='font-display text-sm text-primary-400'>
-                {String(index + 1).padStart(2, '0')}
-              </span>
+          pillars.map((pillar) => (
+            <li class='flex items-center gap-3.5 py-6 lg:py-8 lg:not-first:pl-10'>
+              <span
+                aria-hidden='true'
+                class='h-px w-6 shrink-0 bg-primary-400'
+              />
               <span class='text-base font-bold text-ink sm:text-lg xl:text-[19px]'>
                 {pillar}
               </span>
@@ -107,3 +96,14 @@ const pillars = [
     </div>
   </Container>
 </section>
+
+<style>
+  /* `<Image>` renders its own <img>; the unlayered global `img { height: auto }`
+     rule outweighs Tailwind's layered utilities, so the fill has to be set
+     here past the scope boundary — same as the carousel slides. */
+  .hero-photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

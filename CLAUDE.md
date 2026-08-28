@@ -37,16 +37,23 @@ Tailwind is wired as a **Vite plugin** (`@tailwindcss/vite` in `astro.config.mjs
 
 - Two brand scales, unchanged from the original site: `primary` (teal) and `secondary` (warm tan). The design uses exactly two steps of them — `primary-400` (`#5fbad8`) is the main accent, `secondary-300` (`#d1aa8f`) the warm counterpoint. Teal leads; tan is reserved for gardening and for the closing "promise" bullet of each service card.
 - Semantic, non-numeric tokens for everything else: surfaces (`canvas`, `surface`, `surface-sunken`, `surface-raised`, `surface-warm`), hairlines (`line`, `line-strong`), text from brightest to faintest (`ink-bright`, `ink`, `ink-soft`, `ink-muted`, `ink-dim`, `ink-faint`, `ink-ghost`) and `on-accent` for text sitting on an accent fill.
+- Standalone hex tokens: `whatsapp` (`#24d165`, the contact links in `Form` and `AppFooter`) and `rhythm-dot` (the `rhythm-rule` dot colour).
 
 They are named rather than numbered on purpose: the ramp has near-duplicate steps that numeric naming would have forced into `ink-750`-style nonsense. Reach for an existing token before inventing a hex.
 
+**Radius.** `@theme` also defines a corner-radius scale: `rounded-field` (inputs), `rounded-tile` (the small icon squares), `rounded-card` (panels, cards, carousel viewport, mobile nav). Buttons stay `rounded-full`. Use these, not raw `rounded-xl`/`2xl`/`3xl`.
+
 `rhythm-rule` is a custom `@utility` — the dotted band under the hero and in the contact panel, a nod to the guasá in the association's name.
+
+**Section kicker.** `Eyebrow.astro` is the accent-rule-plus-uppercase-label that opens every section (`HeroSection`, `Features`, `Carousel`, `Form`). One component, one form — don't hand-roll the markup again.
+
+**Scroll reveal.** `Layout.astro` ships a tiny IntersectionObserver: any element with class `reveal` fades/rises in when it scrolls into view. The hidden start state is scoped to `.js .reveal`, so it degrades to fully visible without JS, and `prefers-reduced-motion` disables it. `--reveal-delay` on the element staggers siblings (the service cards use it).
 
 **Typography.** Display face is Archivo Black (`font-display`, applied to every heading by the global rule in `Layout.astro`); body is Karla. Both are self-hosted through `@fontsource`, imported in `Layout.astro`.
 
-**Images.** Every gallery image is its own wrapper component under `src/components/images/`, named ordinally (`FirstImage.astro` … `FourteenthImage.astro`). Each wraps `astro:assets` `<Image>` with a fixed `widths` / `sizes` responsive recipe. `Carousel.astro` uses First–Sixth + Eleventh–Fourteenth, collected into a `slides` array and mapped over. Seventh–Tenth are currently unused: the redesigned service cards draw inline SVG icons instead of the old photographic ones. To add a gallery image, create the next ordinal component and append it to `slides`. (Note: `FourthImage.astro` is imported as `ForthImage` in `Carousel.astro` — pre-existing typo, keep consistent if you touch it.)
+**Images.** Every gallery image is its own wrapper component under `src/components/images/`, named ordinally (`FirstImage.astro` … `FourteenthImage.astro`). Each wraps `astro:assets` `<Image>` with a fixed `widths` / `sizes` responsive recipe. `Carousel.astro` uses First–Sixth + Eleventh–Fourteenth, collected into a `slides` array and mapped over. Seventh–Tenth are currently unused: the redesigned service cards draw inline SVG icons instead of the old photographic ones. `HeroImage.astro` (same folder, not ordinal) is the team photo in the hero — it carries no layout classes; `HeroSection.astro`'s scoped `<style>` fills the frame via `:global(img)` because the unlayered global `img { height: auto }` outweighs Tailwind's layered `h-full` (same reason the carousel slides need their `:global` rule). To add a gallery image, create the next ordinal component and append it to `slides`. (Note: `FourthImage.astro` is imported as `ForthImage` in `Carousel.astro` — pre-existing typo, keep consistent if you touch it.)
 
-**Carousel.** `src/components/Carousel.astro` owns the markup and loads behavior via `<script src='../carousel.js'>`. `src/carousel.js` is a plain DOM script (not a component) that `querySelector`s `.embla` and its children, wires the prev/next buttons, the dot row, the `01 / 10` snap counter, and the Embla `Autoplay` plugin (loop on, 3s delay). It assumes exactly one `.embla` on the page.
+**Carousel.** `src/components/Carousel.astro` owns the markup and loads behavior via `<script src='../carousel.js'>`. `src/carousel.js` is a plain DOM script (not a component) that `querySelector`s `.embla` and its children, wires the prev/next buttons, the dot row, the `01 / 10` snap counter, and the Embla `Autoplay` plugin (loop on, 3s delay — skipped entirely when `prefers-reduced-motion: reduce`). It assumes exactly one `.embla` on the page.
 
 Three things there are load-bearing and easy to break:
 
@@ -72,6 +79,7 @@ There is **no `tailwind.config.mjs`**. All configuration is CSS-first in `src/st
 
 ## Astro 7 specifics
 
+- **`site` in `astro.config.mjs` is a placeholder (`asoafro.pages.dev`).** `Layout.astro` builds the canonical URL and the Open Graph / Twitter tags from it (`og:image` is `public/og-image.jpg`). Set it to the real domain once there is one.
 - **`compressHTML: true` is set deliberately in `astro.config.mjs` — do not remove it.** Astro 7 defaults to `'jsx'`, which drops whitespace between inline elements. Much of the hero and features copy separates words with a newline between a text node and a `<span>`, so the default renders `delimpiezayjardineríaque`. The build stays green; only looking at the page catches it.
 - The compiler is Rust-based and validates HTML strictly: unclosed non-void tags are errors, and invalid nesting is no longer silently restructured.
 - `pnpm-workspace.yaml` carries a `minimumReleaseAgeExclude` block that pnpm maintains itself for recently-published packages. Leave it alone.

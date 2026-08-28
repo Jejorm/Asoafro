@@ -1,0 +1,12 @@
+---
+import { Image } from 'astro:assets'
+import image from '../../images/work_team.jpeg'
+---
+
+<Image
+  src={image}
+  widths={[420, 640, 880, image.width]}
+  sizes='(max-width: 1024px) 100vw, 440px'
+  alt='Equipo de AsoAfro en un parque del Azuay'
+  loading='eager'
+/>
