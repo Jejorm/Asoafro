@@ -46,6 +46,33 @@ const slides = [
         <div class='flex items-center gap-3 self-end'>
           <button
             type='button'
+            aria-pressed='false'
+            aria-label='Pausar el cambio automático de imágenes'
+            class='embla__autoplay hidden size-12 shrink-0 cursor-pointer items-center justify-center rounded-full border border-line-strong text-ink transition duration-150 hover:border-primary-400 hover:text-primary-400 active:scale-95 sm:size-14'
+          >
+            <svg
+              class='embla__autoplay-pause size-4.5'
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 24 24'
+              fill='currentColor'
+              aria-hidden='true'
+            >
+              <rect x='6' y='5' width='4' height='14' rx='1'></rect>
+              <rect x='14' y='5' width='4' height='14' rx='1'></rect>
+            </svg>
+            <svg
+              class='embla__autoplay-play size-4.5'
+              style='display: none'
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 24 24'
+              fill='currentColor'
+              aria-hidden='true'
+            >
+              <path d='M8 5v14l11-7z'></path>
+            </svg>
+          </button>
+          <button
+            type='button'
             aria-label='Imagen anterior'
             class='embla__button embla__button--prev flex size-12 cursor-pointer items-center justify-center rounded-full border border-line-strong text-ink transition duration-150 hover:border-primary-400 hover:text-primary-400 active:scale-95 sm:size-14'
           >

@@ -54,8 +54,15 @@ const ogImage = new URL('/og-image.jpg', Astro.site)
     </script>
   </head>
   <body class='bg-canvas text-ink'>
+    <a
+      href='#content'
+      class='sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-primary-400 focus:px-5 focus:py-2.5 focus:font-bold focus:text-on-accent'
+      >Saltar al contenido</a
+    >
     <AppHeader />
-    <slot />
+    <main id='content'>
+      <slot />
+    </main>
     <AppFooter />
   </body>
 </html>

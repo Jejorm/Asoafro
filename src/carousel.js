@@ -104,6 +104,52 @@ const updateSelectedSnapDisplay = (emblaApi, snapDisplay) => {
     }
 }
 
+// The autoplay pause/resume toggle. Autoplay that starts on its own and never
+// stops fails WCAG 2.2.2, so the button is the explicit stop mechanism. It only
+// exists when the Autoplay plugin was actually loaded (i.e. not when the visitor
+// prefers reduced motion — there is nothing to pause then).
+const addAutoplayToggle = (emblaApi, toggleBtn) => {
+    const autoplay = emblaApi?.plugins()?.autoplay
+    if (!autoplay || !toggleBtn) return () => {}
+
+    toggleBtn.classList.remove('hidden')
+    toggleBtn.classList.add('flex')
+
+    const pauseIcon = toggleBtn.querySelector('.embla__autoplay-pause')
+    const playIcon = toggleBtn.querySelector('.embla__autoplay-play')
+
+    const render = () => {
+        const playing = autoplay.isPlaying()
+        // Inline display, not a `hidden` utility: the unlayered global
+        // `svg { display: block }` reset in Layout.astro outweighs Tailwind's
+        // layered `.hidden`, so the class would never take effect on an <svg>.
+        pauseIcon.style.display = playing ? '' : 'none'
+        playIcon.style.display = playing ? 'none' : ''
+        toggleBtn.setAttribute('aria-pressed', String(!playing))
+        toggleBtn.setAttribute(
+            'aria-label',
+            playing
+                ? 'Pausar el cambio automático de imágenes'
+                : 'Reanudar el cambio automático de imágenes'
+        )
+    }
+
+    const onClick = () => {
+        if (autoplay.isPlaying()) autoplay.stop()
+        else autoplay.play()
+        render()
+    }
+
+    toggleBtn.addEventListener('click', onClick)
+    emblaApi.on('autoplay:play', render).on('autoplay:stop', render)
+    render()
+
+    return () => {
+        toggleBtn.removeEventListener('click', onClick)
+        emblaApi.off('autoplay:play', render).off('autoplay:stop', render)
+    }
+}
+
 const addNavBtnListeners = (emblaApi, ...navButtons) => {
     const onNavClick = () => {
         const autoplay = emblaApi?.plugins()?.autoplay
@@ -140,6 +186,7 @@ const prevBtnNode = emblaNode.querySelector('.embla__button--prev')
 const nextBtnNode = emblaNode.querySelector('.embla__button--next')
 const dotsNode = emblaNode.querySelector('.embla__dots')
 const snapDisplayNode = emblaNode.querySelector('.embla__selected-snap-display')
+const autoplayBtnNode = emblaNode.querySelector('.embla__autoplay')
 
 const emblaApi = EmblaCarousel(
     viewportNode,
@@ -164,8 +211,10 @@ const removeNavBtnListeners = addNavBtnListeners(
     nextBtnNode,
     dotsNode
 )
+const removeAutoplayToggle = addAutoplayToggle(emblaApi, autoplayBtnNode)
 
 emblaApi.on('destroy', removePrevNextBtnsClickHandlers)
 emblaApi.on('destroy', removeDotBtns)
 emblaApi.on('destroy', stopSelectedSnapDisplay)
 emblaApi.on('destroy', removeNavBtnListeners)
+emblaApi.on('destroy', removeAutoplayToggle)
