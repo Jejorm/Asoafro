@@ -35,9 +35,9 @@ Tailwind is wired as a **Vite plugin** (`@tailwindcss/vite` in `astro.config.mjs
 
 **Colors.** `src/styles/global.css` defines everything under `@theme`:
 
-- Two brand scales, unchanged from the original site: `primary` (teal) and `secondary` (warm tan). The design uses exactly two steps of them — `primary-400` (`#5fbad8`) is the main accent, `secondary-300` (`#d1aa8f`) the warm counterpoint. Teal leads; tan is reserved for gardening and for the closing "promise" bullet of each service card.
+- Two brand scales, unchanged from the original site: `primary` (teal) and `secondary` (warm tan). The design uses exactly two steps of them — `primary-400` (`#5fbad8`) is the main accent, `secondary-300` (`#d1aa8f`) the warm counterpoint. Teal leads and carries every accent by default — including all four service-card icon tiles. Tan is a sparing counterpoint: the word "jardinería" in the hero, the alternating highlighted words in the Features intro paragraphs, and the list dashes of the "Jardinería y Áreas Verdes" card. (`surface-warm` is currently unused — it was the tan icon-tile background before the tiles were unified to teal.)
 - Semantic, non-numeric tokens for everything else: surfaces (`canvas`, `surface`, `surface-sunken`, `surface-raised`, `surface-warm`), hairlines (`line`, `line-strong`), text from brightest to faintest (`ink-bright`, `ink`, `ink-soft`, `ink-muted`, `ink-dim`, `ink-faint`, `ink-ghost`) and `on-accent` for text sitting on an accent fill.
-- Standalone hex tokens: `whatsapp` (`#24d165`, the contact links in `Form` and `AppFooter`) and `rhythm-dot` (the `rhythm-rule` dot colour).
+- Standalone hex tokens: `whatsapp` (`#24d165`, only the WhatsApp contact CTA in `Form`) and `rhythm-dot` (the `rhythm-rule` dot colour). The `AppFooter` social icons are both neutral (`ink-muted`, hover `ink-bright`) — no brand colour there.
 
 They are named rather than numbered on purpose: the ramp has near-duplicate steps that numeric naming would have forced into `ink-750`-style nonsense. Reach for an existing token before inventing a hex.
 

@@ -2,9 +2,10 @@
 import Container from './Container.astro'
 import Eyebrow from './Eyebrow.astro'
 
-// `tone` picks the accent a card is drawn with: teal for the cleaning
-// services, warm tan for gardening. The closing bullet of every card is the
-// promise rather than the task, so it always gets the warm accent.
+// `tone` tints the list dashes of a card: teal for the cleaning services, warm
+// tan for gardening. Every dash in a card uses that one accent; the closing
+// bullet is the promise rather than the task, so it stands out through weight
+// and brighter ink instead of a second colour. The icon tile is always teal.
 const services = [
   {
     title: 'Casas y Hogares',
@@ -42,7 +43,7 @@ const services = [
   {
     title: 'Jardinería y Áreas Verdes',
     tone: 'warm',
-    icon: `<path d='M20 4c0 8.5-5.4 13-13 13H4C4 8.5 9.4 4 17 4z'></path><path d='M4 20c2.4-6.2 6.4-9.4 11.5-11.5'></path>`,
+    icon: `<path d='M7 20h10'></path><path d='M10 20c5.5-2.5.8-6.4 3-10'></path><path d='M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z'></path><path d='M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z'></path>`,
     items: [
       'Poda, Desbroce y Diseño de Áreas Verdes.',
       'Mantenimiento de Césped, Arbustos y Flores.',
@@ -93,11 +94,7 @@ const services = [
             style={`--reveal-delay: ${index * 70}ms`}
           >
             <span
-              class={
-                service.tone === 'warm'
-                  ? 'flex size-13 items-center justify-center rounded-tile bg-surface-warm text-secondary-300'
-                  : 'flex size-13 items-center justify-center rounded-tile bg-surface-raised text-primary-400'
-              }
+              class='flex size-13 items-center justify-center rounded-tile bg-surface-raised text-primary-400'
             >
               <svg
                 class='size-6.5'
@@ -119,7 +116,7 @@ const services = [
               {service.items.map((item, itemIndex) => {
                 const isClosing = itemIndex === service.items.length - 1
                 const dash =
-                  isClosing || service.tone === 'warm'
+                  service.tone === 'warm'
                     ? 'text-secondary-300'
                     : 'text-primary-400'
 
