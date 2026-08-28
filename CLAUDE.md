@@ -45,6 +45,8 @@ They are named rather than numbered on purpose: the ramp has near-duplicate step
 
 `rhythm-rule` is a custom `@utility` — the dotted band under the hero and in the contact panel, a nod to the guasá in the association's name.
 
+**Logo mark.** Both the wordmark accent in `AppHeader.astro` and `public/favicon.svg` are the same shape: an unfilled "roulette wheel" outline — an outer circle, a small hub circle, and 8 spokes, all `stroke`, no fill. The header copy inlines it with `stroke='currentColor'` + `text-ink-bright` and spins it 90° on hover via `motion-safe:group-hover:rotate-90`. The favicon carries an inline `<style>` that strokes it `#0b0f13` normally and `#eef4f6` under `prefers-color-scheme: dark`, so it stays visible on both light and dark browser chrome. Keep the two in sync if the mark changes.
+
 **Section kicker.** `Eyebrow.astro` is the accent-rule-plus-uppercase-label that opens every section (`HeroSection`, `Features`, `Carousel`, `Form`). One component, one form — don't hand-roll the markup again.
 
 **Scroll reveal.** `Layout.astro` ships a tiny IntersectionObserver: any element with class `reveal` fades/rises in when it scrolls into view. The hidden start state is scoped to `.js .reveal`, so it degrades to fully visible without JS, and `prefers-reduced-motion` disables it. `--reveal-delay` on the element staggers siblings (the service cards use it).

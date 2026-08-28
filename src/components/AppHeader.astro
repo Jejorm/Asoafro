@@ -60,12 +60,35 @@ const links = [
     <Container>
       <div class='relative flex items-center justify-between gap-6 py-4 lg:py-5'>
         <div class='relative z-20 flex w-full items-center justify-between lg:w-max'>
-          <a href='/#home' aria-label='AsoAfro' class='flex items-baseline gap-2.5'>
+          <a
+            href='/#home'
+            aria-label='AsoAfro'
+            class='group flex items-center gap-2.5'
+          >
             <span
-              class='font-display text-2xl tracking-tight text-ink-bright transition hover:scale-105 active:scale-95'
+              class='font-display text-2xl tracking-tight text-ink-bright transition group-hover:scale-105 group-active:scale-95'
               >AsoAfro</span
             >
-            <span class='size-[7px] rounded-full bg-primary-400'></span>
+            <svg
+              class='size-7 shrink-0 text-ink-bright transition-transform duration-500 ease-out motion-safe:group-hover:rotate-90'
+              viewBox='0 0 24 24'
+              fill='none'
+              stroke='currentColor'
+              stroke-width='1.6'
+              stroke-linecap='round'
+              aria-hidden='true'
+            >
+              <circle cx='12' cy='12' r='10.5'></circle>
+              <circle cx='12' cy='12' r='4.3'></circle>
+              <path d='M12 7.7 12 1.5'></path>
+              <path d='M15.04 8.96 19.42 4.58'></path>
+              <path d='M16.3 12 22.5 12'></path>
+              <path d='M15.04 15.04 19.42 19.42'></path>
+              <path d='M12 16.3 12 22.5'></path>
+              <path d='M8.96 15.04 4.58 19.42'></path>
+              <path d='M7.7 12 1.5 12'></path>
+              <path d='M8.96 8.96 4.58 4.58'></path>
+            </svg>
           </a>
 
           <div class='relative flex max-h-10 items-center lg:hidden'>
